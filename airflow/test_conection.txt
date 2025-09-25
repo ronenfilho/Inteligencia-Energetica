@@ -19,3 +19,24 @@ curl -X GET "https://api.airbyte.com/v1/destinations?workspaceIds=71262590-7a33-
 curl -X GET "https://api.airbyte.com/v1/sources?workspaceIds=71262590-7a33-4874-8be1-d80cc8125c1c" \
   -H "Authorization: Bearer $AIRBYTE_API_KEY" \
   -H "Content-Type: application/json"
+
+  # ---------
+
+# Antes (token manual):
+./cleanup_airbyte.sh eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+# Agora (credenciais da aplicação):
+./cleanup_airbyte.sh client_id client_secret
+
+---------------
+
+# ✅ CORRETO: Gerar access_token usando client_secret
+curl -X POST https://api.airbyte.com/v1/applications/token \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client_id": "e81f2e01-b900-4da3-9822-73a5fa2f17db",
+    "client_secret": "4NLhMUBF7vygiZQ8C6cplijbXtBzQEGx"
+  }'
+
+# ✅ TOKEN VÁLIDO ATUAL (expira em 3 min):
+export CURRENT_TOKEN="eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ6Z1BPdmhDSC1Ic21OQnhhV3lnLU11dlF6dHJERTBDSEJHZDB2MVh0Vnk0In0.eyJleHAiOjE3NTg4MjQ2NjIsImlhdCI6MTc1ODgyMzc2MiwianRpIjoidHJydGNjOjhlZDhjNGE5LTlkOTktNGJmMC1iMzQ1LTI4YzdkMjU5N2I2NiIsImlzcyI6Imh0dHBzOi8vY2xvdWQuYWlyYnl0ZS5jb20vYXV0aC9yZWFsbXMvX2FpcmJ5dGUtYXBwbGljYXRpb24tY2xpZW50cyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIxYWNkZDYyMS01NTA4LTQ3MWQtYjVhMi03YjRmNjk1MjdkNDUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJlODFmMmUwMS1iOTAwLTRkYTMtOTgyMi03M2E1ZmEyZjE3ZGIiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLV9haXJieXRlLWFwcGxpY2F0aW9uLWNsaWVudHMiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJjbGllbnRIb3N0IjoiMTcyLjIzLjIuNjkiLCJ1c2VyX2lkIjoiMWFjZGQ2MjEtNTUwOC00NzFkLWI1YTItN2I0ZjY5NTI3ZDQ1IiwicHJlZmVycmVkX3VzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LWU4MWYyZTAxLWI5MDAtNGRhMy05ODIyLTczYTVmYTJmMTdkYiIsImNsaWVudEFkZHJlc3MiOiIxNzIuMjMuMi42OSIsImNsaWVudF9pZCI6ImU4MWYyZTAxLWI5MDAtNGRhMy05ODIyLTczYTVmYTJmMTdkYiJ9.s1SFTokSwdkscSbppKP2OFR35ylYDt7SJFhTBEkqCtqZVwgB_9IA0pdyg2xIixO7gYCVJhvy9G1GXbJ-UUAlVDe-ODibF7o4lR3WKZBIr-uCxYy4dH-7yxAf0WRwGGFuGnFbtt_67iLSX7AFPUkI_RJfiUOr_twKrof_khvVW3NMUNFrv1yFyNVzlZCR_BzrBmt8o-AhkRG4yLKA9UN5YTdB_Lke4tN-NYOHgLnS5oijbukT-DBV1s9e7UzWvHG0emekUtC3A-WYB-i_F79-85eivnc4u2Q_pm_mYMuqU-p82pi-y3ayxhR1lpc6grAMavNv81uxDqATjUbPcGCRTg"

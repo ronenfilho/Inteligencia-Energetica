@@ -21,7 +21,7 @@ WORKSPACE_ID="71262590-7a33-4874-8be1-d80cc8125c1c"
 
 # Função para gerar um novo access token
 get_access_token() {
-    echo "🔑 Gerando novo access token..."
+    echo "🔑 Gerando novo access token..." >&2
     
     local response=$(curl -s -X POST https://api.airbyte.com/v1/applications/token \
         -H "Content-Type: application/json" \
@@ -33,12 +33,12 @@ get_access_token() {
     local token=$(echo "$response" | jq -r '.access_token // empty')
     
     if [ -z "$token" ] || [ "$token" = "null" ]; then
-        echo "❌ Erro ao gerar access token"
-        echo "Resposta da API: $response"
+        echo "❌ Erro ao gerar access token" >&2
+        echo "Resposta da API: $response" >&2
         exit 1
     fi
     
-    echo "✅ Access token gerado com sucesso"
+    echo "✅ Access token gerado com sucesso" >&2
     echo "$token"
 }
 
@@ -81,7 +81,7 @@ list_all_connections() {
     echo "📋 Conexões encontradas:"
     
     while [ "$has_more" = true ]; do
-        local response=$(api_call GET "https://api.airbyte.com/v1/connections?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
+        local response=$(api_call GET "/connections?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
         
         if echo "$response" | grep -q "Unauthorized"; then
             echo "❌ Token inválido ou expirado"
@@ -119,7 +119,7 @@ get_connections_to_delete() {
     local has_more=true
     
     while [ "$has_more" = true ]; do
-        local response=$(api_call GET "https://api.airbyte.com/v1/connections?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
+        local response=$(api_call GET "/connections?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
         
         if echo "$response" | grep -q "Unauthorized"; then
             echo "❌ Token inválido ou expirado"
@@ -168,8 +168,9 @@ if [[ $delete_connections =~ ^[Yy]$ ]]; then
             # Skip empty lines or non-UUID strings
             if [[ $id =~ ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$ ]]; then
                 echo "  Deletando conexão: $id"
-                HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X DELETE "https://api.airbyte.com/v1/connections/$id" \
-                    -H "Authorization: Bearer $TOKEN" \
+                current_token=$(get_access_token)
+                HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X DELETE "$BASE_URL/connections/$id" \
+                    -H "Authorization: Bearer $current_token" \
                     -H "Content-Type: application/json")
                 
                 if [ "$HTTP_STATUS" = "204" ]; then
@@ -198,7 +199,7 @@ list_all_sources() {
     echo "📋 Sources encontrados:"
     
     while [ "$has_more" = true ]; do
-        local response=$(api_call GET "https://api.airbyte.com/v1/sources?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
+        local response=$(api_call GET "/sources?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
         
         if [ -z "$response" ] || echo "$response" | grep -q "Unauthorized"; then
             echo "❌ Erro na requisição ou token inválido"
@@ -254,7 +255,7 @@ get_sources_to_delete() {
     local has_more=true
     
     while [ "$has_more" = true ]; do
-        local response=$(api_call GET "https://api.airbyte.com/v1/sources?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
+        local response=$(api_call GET "/sources?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
         
         if [ -z "$response" ] || echo "$response" | grep -q "Unauthorized"; then
             echo "❌ Erro na requisição ou token inválido"
@@ -331,8 +332,9 @@ if [ "$source_option" != "3" ] && [ -n "$SOURCE_IDS" ]; then
         # Skip empty lines or non-UUID strings
         if [[ $id =~ ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$ ]]; then
             echo "  Deletando source: $id"
-            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X DELETE "https://api.airbyte.com/v1/sources/$id" \
-                -H "Authorization: Bearer $TOKEN" \
+            current_token=$(get_access_token)
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X DELETE "$BASE_URL/sources/$id" \
+                -H "Authorization: Bearer $current_token" \
                 -H "Content-Type: application/json")
             
             if [ "$HTTP_STATUS" = "204" ]; then
@@ -356,7 +358,7 @@ total_connections=0
 offset=0
 limit=100
 while true; do
-    response=$(api_call GET "https://api.airbyte.com/v1/connections?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
+    response=$(api_call GET "/connections?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
     page_count=$(echo "$response" | jq -r '.data | length // 0' 2>/dev/null)
     
     # Garante que page_count seja um número
@@ -381,7 +383,7 @@ total_sources=0
 total_disponibilidade=0
 offset=0
 while true; do
-    response=$(api_call GET "https://api.airbyte.com/v1/sources?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
+    response=$(api_call GET "/sources?workspaceIds=$WORKSPACE_ID&limit=$limit&offset=$offset")
     page_count=$(echo "$response" | jq -r '.data | length // 0' 2>/dev/null)
     
     # Garante que page_count seja um número

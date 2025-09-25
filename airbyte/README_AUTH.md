@@ -66,7 +66,7 @@ AIRBYTE_DESTINATION_ID = a0a784b5-de8a-42dc-a02f-328ba96e644d
 ```bash
 # 1. Configurar as credenciais da aplicação
 export CLIENT_ID="e81f2e01-b900-4da3-9822-73a5fa2f17db"
-export CLIENT_SECRET="N8_0mEhd-7E2PJE3nBnVMvFFLtcpUB8L"
+export CLIENT_SECRET="4NLhMUBF7vygiZQ8C6cplijbXtBzQEGx"
 
 # 2. Executar o script de cleanup
 cd /home/decode/workspace/Inteligencia-Energetica/airbyte
