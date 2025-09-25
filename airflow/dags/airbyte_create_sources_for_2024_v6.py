@@ -1,28 +1,28 @@
-from datetime import datetime, timedelta
-from airflow import DAG
-from airflow.operators.python import PythonOperator
-from airflow.models import Variable
+#foi
+from __future__ import annotations
+
+import pendulum
 import requests
 import json
-
-# Configurações padrão do DAG
-default_args = {
-    'owner': 'data_team',
-    'depends_on_past': False,
-    'start_date': datetime(2024, 1, 1),
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 1,
-    'retry_delay': timedelta(minutes=5),
-}
+from airflow.models.dag import DAG
+from airflow.decorators import task
+from airflow.models import Variable
 
 dag = DAG(
-    'airbyte_create_sources_for_2024_v6',
-    default_args=default_args,
-    description='Criar sources e connections no Airbyte para dados de 2024 - v6 com auto token refresh',
-    schedule_interval=None,  # Executar manualmente
+    dag_id='airbyte_create_sources_for_2024_v6',
+    start_date=pendulum.datetime(2025, 1, 1, tz="UTC"),
+    schedule=None,  # Executar manualmente
     catchup=False,
-    tags=['airbyte', 'sources', '2024', 'energy'],
+    tags=['airbyte', 'sources', '2025', 'energy'],
+    description='Criar sources e connections no Airbyte para dados de 2025 - v6 com auto token refresh',
+    default_args={
+        'owner': 'data_team',
+        'depends_on_past': False,
+        'email_on_failure': False,
+        'email_on_retry': False,
+        'retries': 1,
+        'retry_delay': pendulum.duration(minutes=5),
+    }
 )
 
 def get_access_token():
@@ -67,52 +67,62 @@ def make_api_request(method, endpoint, data=None):
     
     return response
 
+@task
 def create_sources_task():
-    """Criar sources para todos os meses de 2024"""
-    workspace_id = Variable.get("AIRBYTE_WORKSPACE_ID")
+    """Criar sources para todos os meses de 2025"""
+    workspace_id = Variable.get("airbyte_workspace_id")
+    
+    # Usar definitionId da variável ou valor padrão
+    try:
+        definition_id = Variable.get("airbyte_source_definition_id")
+        print(f"📋 Usando definitionId da variável: {definition_id}")
+    except:
+        definition_id = "778daa7c-feaf-4db6-96f3-70fd645acc77"
+        print(f"📋 Usando definitionId padrão: {definition_id}")
     
     sources_created = []
     
-    # Meses de 2024
+    # Meses de 2025
     months = [
-        ("2024-01", "Janeiro"),
-        ("2024-02", "Fevereiro"),
-        ("2024-03", "Março"),
-        ("2024-04", "Abril"),
-        ("2024-05", "Maio"),
-        ("2024-06", "Junho"),
-        ("2024-07", "Julho"),
-        ("2024-08", "Agosto"),
-        ("2024-09", "Setembro"),
-        ("2024-10", "Outubro"),
-        ("2024-11", "Novembro"),
-        ("2024-12", "Dezembro")
+        ("2025-01", "Janeiro"),
+        ("2025-02", "Fevereiro"),
+        ("2025-03", "Março"),
+        ("2025-04", "Abril"),
+        ("2025-05", "Maio"),
+        ("2025-06", "Junho"),
+        ("2025-07", "Julho"),
+        ("2025-08", "Agosto"),
+        ("2025-09", "Setembro"),
+        ("2025-10", "Outubro"),
+        ("2025-11", "Novembro"),
+        ("2025-12", "Dezembro")
     ]
+    
+    print(f"🏗️ Iniciando criação de {len(months)} sources para 2025...")
+    print(f"📍 Workspace ID: {workspace_id}")
+    print(f"🔧 Definition ID: {definition_id}")
     
     for month_code, month_name in months:
         print(f"🔄 Criando source para {month_name} ({month_code})...")
         
+        # URL do arquivo CSV no S3 da ONS
+        year_month = month_code.replace("-", "_")  # Converter 2025-01 para 2025_01
+        s3_url = f"https://ons-aws-prod-opendata.s3.amazonaws.com/dataset/disponibilidade_usina_ho/DISPONIBILIDADE_USINA_{year_month}.csv"
+        print(f"🔗 URL S3 gerada: {s3_url}")
+        
         source_data = {
             "name": f"DISPONIBILIDADE_USINA_{month_code}",
             "workspaceId": workspace_id,
-            "definitionId": "cf40079c-1369-4157-8497-f621b98cb4eb",  # REST API definition ID
+            "definitionId": definition_id,  # File connector definition ID
             "configuration": {
-                "name": f"DISPONIBILIDADE_USINA_{month_code}",
-                "url_base": "https://dadosabertos.ons.org.br/api/3/action/datastore_search",
-                "path": "/",
-                "authenticator": {
-                    "type": "NoAuth"
+                "dataset_name": f"DISPONIBILIDADE_USINA_{month_code}",
+                "format": "csv",
+                "url": s3_url,
+                "provider": {
+                    "storage": "HTTPS",
+                    "user_agent": False
                 },
-                "request_parameters": {
-                    "resource_id": "b1bd71e7-d0ad-4214-9053-cbd58e9564a7",
-                    "filters": json.dumps({"dat_referencia": month_code}),
-                    "limit": "1000000"
-                },
-                "paginator": {
-                    "type": "OffsetIncrement",
-                    "page_size": 1000000
-                },
-                "request_headers": {}
+                "reader_options": "{ \"delimiter\": \";\" }"
             }
         }
         
@@ -138,17 +148,15 @@ def create_sources_task():
     print(f"\n📊 Resumo: {len(sources_created)} sources criados com sucesso")
     return sources_created
 
-def create_connections_task(**context):
+@task
+def create_connections_task(sources_created):
     """Criar connections para os sources criados"""
-    # Recupera a lista de sources da task anterior
-    sources_created = context['task_instance'].xcom_pull(task_ids='create_sources')
-    
     if not sources_created:
         print("❌ Nenhum source foi criado na etapa anterior")
         return []
     
-    workspace_id = Variable.get("AIRBYTE_WORKSPACE_ID")
-    destination_id = Variable.get("AIRBYTE_DESTINATION_ID")  # a0a784b5-de8a-42dc-a02f-328ba96e644d
+    workspace_id = Variable.get("airbyte_workspace_id")
+    destination_id = Variable.get("airbyte_destination_id_snowflake")  # a0a784b5-de8a-42dc-a02f-328ba96e644d
     
     connections_created = []
     
@@ -159,20 +167,23 @@ def create_connections_task(**context):
         
         print(f"🔄 Criando connection para {month_name} ({source_id})...")
         
+        # Usar configuração simplificada que funciona na maioria dos casos
+        print(f"🔧 Criando connection com configuração otimizada...")
+        
         connection_data = {
             "name": f"Connection_DISPONIBILIDADE_USINA_{month_code}",
             "sourceId": source_id,
             "destinationId": destination_id,
-            "configurations": {
-                "streams": [
-                    {
-                        "name": f"DISPONIBILIDADE_USINA_{month_code}",
-                        "syncMode": "full_refresh_overwrite"
-                    }
-                ]
+            "syncMode": "full_refresh",
+            "schedule": {
+                "scheduleType": "manual"
             }
         }
         
+        # Tentar criar connection com diferentes configurações
+        success = False
+        
+        # Tentativa 1: Configuração completa
         try:
             response = make_api_request("POST", "/connections", connection_data)
             
@@ -186,28 +197,50 @@ def create_connections_task(**context):
                     "source_id": source_id,
                     "connection_id": connection_id
                 })
+                success = True
             else:
-                print(f"❌ Erro ao criar connection para {month_name}: {response.status_code}")
+                print(f"❌ Primeira tentativa falhou para {month_name}: {response.status_code}")
                 print(f"Resposta: {response.text}")
                 
         except Exception as e:
-            print(f"❌ Exceção ao criar connection para {month_name}: {str(e)}")
+            print(f"❌ Exceção na primeira tentativa para {month_name}: {str(e)}")
+        
+        # Tentativa 2: Configuração minimalista
+        if not success:
+            print(f"🔄 Tentando configuração minimalista para {month_name}...")
+            minimal_config = {
+                "name": f"Connection_DISPONIBILIDADE_USINA_{month_code}",
+                "sourceId": source_id,
+                "destinationId": destination_id
+            }
+            
+            try:
+                response = make_api_request("POST", "/connections", minimal_config)
+                
+                if response.status_code == 200:
+                    connection_info = response.json()
+                    connection_id = connection_info.get("connectionId")
+                    print(f"✅ Connection minimalista criada para {month_name}: {connection_id}")
+                    connections_created.append({
+                        "month": month_code,
+                        "name": month_name,
+                        "source_id": source_id,
+                        "connection_id": connection_id
+                    })
+                else:
+                    print(f"❌ Segunda tentativa também falhou para {month_name}: {response.status_code}")
+                    print(f"Resposta: {response.text}")
+                    
+            except Exception as e:
+                print(f"❌ Todas as tentativas falharam para {month_name}: {str(e)}")
     
     print(f"\n📊 Resumo: {len(connections_created)} connections criadas com sucesso")
     return connections_created
 
-# Definir as tasks
-create_sources = PythonOperator(
-    task_id='create_sources',
-    python_callable=create_sources_task,
-    dag=dag,
-)
-
-create_connections = PythonOperator(
-    task_id='create_connections',
-    python_callable=create_connections_task,
-    dag=dag,
-)
-
-# Definir dependências
-create_sources >> create_connections
+# Definir e executar as tasks
+with dag:
+    sources_created = create_sources_task()
+    connections_created = create_connections_task(sources_created)
+    
+    # Definir dependências
+    sources_created >> connections_created
