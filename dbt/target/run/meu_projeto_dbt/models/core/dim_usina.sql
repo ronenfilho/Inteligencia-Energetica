@@ -1,5 +1,5 @@
 
-  create or replace   view LAB_PIPELINE.CORE.dim_usina
+  create or replace   view IE_DB.CORE.dim_usina
   
    as (
     WITH usinas_unicas AS (
@@ -8,7 +8,7 @@
         ceg,
         nom_usina,
         nom_tipocombustivel
-    FROM LAB_PIPELINE.STAGING.stg_usina_disp
+    FROM IE_DB.STAGING.stg_usina_disp
 )
 
 SELECT

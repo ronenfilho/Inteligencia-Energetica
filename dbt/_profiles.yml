@@ -1,0 +1,25 @@
+laboratorio_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: FQIMVRH-BR39779
+
+      # --- Escolha um método de autenticação ---
+
+      # Método 1: Usuário e Senha (mais simples)
+      user: SVC_PIPELINE_USER_IE
+      password: tFmrErTepy5KWGndBFdb
+
+      # Método 2: Autenticação por Chave (mais seguro)
+      # user: SEU_USUARIO_SNOWFLAKE
+      # private_key_path: /path/to/your/private_key.p8
+      # private_key_passphrase: SUA_SENHA_DA_CHAVE_SE_HOUVER
+
+      # --- Configurações restantes ---
+      role: IE_TRANSFORM_ROLE
+      database: IE_DB
+      warehouse: IE_TRANSFORM_WH
+      schema: RAW
+      threads: 4
+      client_session_keep_alive: False

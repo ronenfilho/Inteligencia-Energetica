@@ -16,7 +16,7 @@ SELECT
     val_potenciainstalada::NUMBER(38, 5) AS pot_instalada_mw,
     val_dispoperacional::NUMBER(38, 5) AS disp_operacional_mw,
     val_dispsincronizada::NUMBER(38, 5) AS disp_sincronizada_mw
-FROM LAB_PIPELINE.staging.disponibilidade_usina_2025_07
+FROM IE_DB.staging.disponibilidade_usina_2025_07
 
 UNION ALL
 
@@ -36,7 +36,7 @@ SELECT
     val_potenciainstalada::NUMBER(38, 5) AS pot_instalada_mw,
     val_dispoperacional::NUMBER(38, 5) AS disp_operacional_mw,
     val_dispsincronizada::NUMBER(38, 5) AS disp_sincronizada_mw
-FROM LAB_PIPELINE.staging.disponibilidade_usina_2025_08
+FROM IE_DB.staging.disponibilidade_usina_2025_08
 
 UNION ALL
 
@@ -56,4 +56,4 @@ SELECT
     val_potenciainstalada::NUMBER(38, 5) AS pot_instalada_mw,
     val_dispoperacional::NUMBER(38, 5) AS disp_operacional_mw,
     val_dispsincronizada::NUMBER(38, 5) AS disp_sincronizada_mw
-FROM LAB_PIPELINE.staging.disponibilidade_usina_2025_09
+FROM IE_DB.staging.disponibilidade_usina_2025_09

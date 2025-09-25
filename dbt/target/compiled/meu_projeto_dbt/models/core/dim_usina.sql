@@ -4,7 +4,7 @@ WITH usinas_unicas AS (
         ceg,
         nom_usina,
         nom_tipocombustivel
-    FROM LAB_PIPELINE.STAGING.stg_usina_disp
+    FROM IE_DB.STAGING.stg_usina_disp
 )
 
 SELECT

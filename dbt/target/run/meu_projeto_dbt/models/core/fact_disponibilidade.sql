@@ -1,25 +1,25 @@
 
-  create or replace   view LAB_PIPELINE.CORE.fact_disponibilidade
+  create or replace   view IE_DB.CORE.fact_disponibilidade
   
    as (
     -- CTE principal para buscar os dados de staging.
 WITH stg_dados AS (
-    SELECT * FROM LAB_PIPELINE.STAGING.stg_usina_disp
+    SELECT * FROM IE_DB.STAGING.stg_usina_disp
 ),
 
 -- CTE para buscar os dados da dimensão de usina.
 dim_usina AS (
-    SELECT * FROM LAB_PIPELINE.CORE.dim_usina
+    SELECT * FROM IE_DB.CORE.dim_usina
 ),
 
 -- CTE para buscar os dados da dimensão de localidade.
 dim_localidade AS (
-    SELECT * FROM LAB_PIPELINE.CORE.dim_localidade
+    SELECT * FROM IE_DB.CORE.dim_localidade
 ),
 
 -- CTE para buscar os dados da dimensão de tempo.
 dim_tempo AS (
-    SELECT * FROM LAB_PIPELINE.CORE.dim_tempo
+    SELECT * FROM IE_DB.CORE.dim_tempo
 )
 
 -- Seleção final para construir a tabela de fatos.

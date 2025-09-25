@@ -1,7 +1,7 @@
 WITH instantes_unicos AS (
     SELECT
         DISTINCT instante
-    FROM LAB_PIPELINE.STAGING.stg_usina_disp
+    FROM IE_DB.STAGING.stg_usina_disp
 )
 SELECT
     md5(cast(coalesce(cast(instante::STRING as TEXT), '_dbt_utils_surrogate_key_null_') as TEXT)) AS id_dim_tempo,
