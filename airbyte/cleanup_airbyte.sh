@@ -1,23 +1,37 @@
 #!/bin/bash
 
 # Script para limpar recursos do Airbyte
-# Uso: ./cleanup_airbyte.sh <client_id> <client_secret>
+# Uso: ./cleanup_airbyte.sh
 
-if [ $# -ne 2 ]; then
-    echo "❌ Erro: Client ID e Client Secret são obrigatórios"
-    echo "Uso: $0 <client_id> <client_secret>"
-    echo ""
-    echo "Para obter suas credenciais:"
-    echo "1. Acesse Airbyte Cloud -> Settings -> Account -> Applications"
-    echo "2. Crie uma nova aplicação ou use uma existente"
-    echo "3. Copie o client_id e client_secret"
+# Carregar variáveis do arquivo .env
+if [ -f "$(dirname "$0")/.env" ]; then
+    echo "📁 Carregando configurações do arquivo .env..."
+    export $(grep -v '^#' "$(dirname "$0")/.env" | xargs)
+else
+    echo "❌ Erro: Arquivo .env não encontrado!"
+    echo "Crie o arquivo .env com as seguintes variáveis:"
+    echo "AIRBYTE_CLIENT_ID=seu_client_id"
+    echo "AIRBYTE_CLIENT_SECRET=seu_client_secret"
+    echo "AIRBYTE_WORKSPACE_ID=seu_workspace_id"
+    echo "AIRBYTE_DESTINATION_ID=seu_destination_id"
+    echo "AIRBYTE_BASE_URL=https://api.airbyte.com/v1"
     exit 1
 fi
 
-CLIENT_ID="$1"
-CLIENT_SECRET="$2"
-BASE_URL="https://api.airbyte.com/v1"
-WORKSPACE_ID="71262590-7a33-4874-8be1-d80cc8125c1c"
+# Verificar se todas as variáveis necessárias estão definidas
+if [ -z "$AIRBYTE_CLIENT_ID" ] || [ -z "$AIRBYTE_CLIENT_SECRET" ] || [ -z "$AIRBYTE_WORKSPACE_ID" ]; then
+    echo "❌ Erro: Variáveis obrigatórias não encontradas no arquivo .env"
+    echo "Verifique se o arquivo .env contém:"
+    echo "- AIRBYTE_CLIENT_ID"
+    echo "- AIRBYTE_CLIENT_SECRET" 
+    echo "- AIRBYTE_WORKSPACE_ID"
+    exit 1
+fi
+
+CLIENT_ID="$AIRBYTE_CLIENT_ID"
+CLIENT_SECRET="$AIRBYTE_CLIENT_SECRET"
+BASE_URL="${AIRBYTE_BASE_URL:-https://api.airbyte.com/v1}"
+WORKSPACE_ID="$AIRBYTE_WORKSPACE_ID"
 
 # Função para gerar um novo access token
 get_access_token() {

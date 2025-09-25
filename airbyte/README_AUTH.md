@@ -34,14 +34,24 @@ AIRBYTE_DESTINATION_ID = a0a784b5-de8a-42dc-a02f-328ba96e644d
 
 ### Script de Cleanup
 
-**Antes:**
+**Antes (v1):**
 ```bash
 ./cleanup_airbyte.sh eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
-**Agora:**
+**Antes (v2):**
 ```bash
 ./cleanup_airbyte.sh seu_client_id seu_client_secret
+```
+
+**Agora (v3 - com .env):**
+```bash
+# 1. Configure o arquivo .env uma única vez
+cp .env.example .env
+# Edite o .env com suas credenciais
+
+# 2. Execute o script sem parâmetros
+./cleanup_airbyte.sh
 ```
 
 ### DAG do Airflow
@@ -64,13 +74,18 @@ AIRBYTE_DESTINATION_ID = a0a784b5-de8a-42dc-a02f-328ba96e644d
 ## Exemplo de Uso
 
 ```bash
-# 1. Configurar as credenciais da aplicação
-export CLIENT_ID="e81f2e01-b900-4da3-9822-73a5fa2f17db"
-export CLIENT_SECRET="4NLhMUBF7vygiZQ8C6cplijbXtBzQEGx"
-
-# 2. Executar o script de cleanup
+# 1. Configurar o arquivo .env (apenas uma vez)
 cd /home/decode/workspace/Inteligencia-Energetica/airbyte
-./cleanup_airbyte.sh $CLIENT_ID $CLIENT_SECRET
+cp .env.example .env
+
+# Editar o .env com suas credenciais:
+# AIRBYTE_CLIENT_ID=e81f2e01-b900-4da3-9822-73a5fa2f17db
+# AIRBYTE_CLIENT_SECRET=4NLhMUBF7vygiZQ8C6cplijbXtBzQEGx
+# AIRBYTE_WORKSPACE_ID=71262590-7a33-4874-8be1-d80cc8125c1c
+# AIRBYTE_DESTINATION_ID=a0a784b5-de8a-42dc-a02f-328ba96e644d
+
+# 2. Executar o script de cleanup (simples!)
+./cleanup_airbyte.sh
 
 # 3. Executar o DAG v6 no Airflow (com variáveis configuradas)
 ```
