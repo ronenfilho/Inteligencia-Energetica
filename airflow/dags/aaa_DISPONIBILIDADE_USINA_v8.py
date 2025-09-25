@@ -25,7 +25,7 @@ dag = DAG(
     },
     params={
         "start_date": "2025-01-01",  # Data de início da captura (formato YYYY-MM-DD)
-        "end_date": "auto",          # "auto" para data atual ou YYYY-MM-DD para data específica
+        "end_date": "auto",          # "auto" para até mês atual (exclui futuros) ou YYYY-MM-DD para data específica
         "force_recreate": False,     # Se True, recria sources mesmo se já existirem
         "trigger_sync": True         # Se True, inicia sincronização automática após criar connections
     }
@@ -164,14 +164,21 @@ def generate_month_list(start_date_str, end_date_str):
     start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
     
     if end_date_str == "auto":
+        # Usar data atual, mas limitar ao mês atual (não incluir meses futuros)
         end_date = datetime.now()
+        print(f"📅 Data atual detectada: {end_date.strftime('%Y-%m-%d')}")
     else:
         end_date = datetime.strptime(end_date_str, "%Y-%m-%d")
     
     months = []
     current = start_date.replace(day=1)  # Começar no primeiro dia do mês
+    current_month = datetime.now().replace(day=1)  # Mês atual para comparação
     
     while current <= end_date:
+        # Se for "auto", não incluir meses futuros (posteriores ao mês atual)
+        if end_date_str == "auto" and current > current_month:
+            print(f"⏹️ Parando em {current.strftime('%Y-%m')} - mês futuro não incluído")
+            break
         month_code = current.strftime("%Y-%m")
         month_name = current.strftime("%B %Y")
         
@@ -193,6 +200,13 @@ def generate_month_list(start_date_str, end_date_str):
             current = current.replace(year=current.year + 1, month=1)
         else:
             current = current.replace(month=current.month + 1)
+    
+    # Log informativo dos meses que serão processados
+    if months:
+        month_list = [m[0] for m in months]
+        print(f"📋 Meses que serão processados: {', '.join(month_list)}")
+        if end_date_str == "auto":
+            print(f"🚫 Meses futuros excluídos automaticamente (data atual: {datetime.now().strftime('%Y-%m')})")
     
     return months
 
