@@ -1,0 +1,20 @@
+{
+  "name": "Snowflake - IE",
+  "workspaceId": "71262590-7a33-4874-8be1-d80cc8125c1c",
+  "definitionId": "424892c4-daac-4491-b35d-c6688ba547ba",
+  "configuration": {
+    "host": "FQIMVRH-BR39779.snowflakecomputing.com",
+    "role": "IE_TRANSFORM_ROLE",
+    "schema": "STAGING",
+    "database": "IE_DB",
+    "username": "SVC_PIPELINE_USER_IE",
+    "warehouse": "IE_TRANSFORM_WH",
+    "credentials": {
+      "password": "******",
+      "auth_type": "Username and Password"
+    },
+    "disable_type_dedupe": false,
+    "use_merge_for_upsert": false,
+    "retention_period_days": 1
+  }
+}

@@ -1,0 +1,21 @@
+# Exporte a chave para uma variável para facilitar
+export AIRBYTE_API_KEY='eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ6Z1BPdmhDSC1Ic21OQnhhV3lnLU11dlF6dHJERTBDSEJHZDB2MVh0Vnk0In0.eyJleHAiOjE3NTg4MjA2ODksImlhdCI6MTc1ODgxOTc4OSwianRpIjoidHJydGNjOmYwODgxMDcxLTUwNjEtNDRlOS1iZjc4LWIzZThiZWY1YmZhMCIsImlzcyI6Imh0dHBzOi8vY2xvdWQuYWlyYnl0ZS5jb20vYXV0aC9yZWFsbXMvX2FpcmJ5dGUtYXBwbGljYXRpb24tY2xpZW50cyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIxYWNkZDYyMS01NTA4LTQ3MWQtYjVhMi03YjRmNjk1MjdkNDUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiI4ODQyMzdiNS05ODExLTRmNjAtOTJmMy1lMDBhOWU5ZGNhMTkiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLV9haXJieXRlLWFwcGxpY2F0aW9uLWNsaWVudHMiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJjbGllbnRIb3N0IjoiMTcyLjIzLjQuOSIsInVzZXJfaWQiOiIxYWNkZDYyMS01NTA4LTQ3MWQtYjVhMi03YjRmNjk1MjdkNDUiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzZXJ2aWNlLWFjY291bnQtODg0MjM3YjUtOTgxMS00ZjYwLTkyZjMtZTAwYTllOWRjYTE5IiwiY2xpZW50QWRkcmVzcyI6IjE3Mi4yMy40LjkiLCJjbGllbnRfaWQiOiI4ODQyMzdiNS05ODExLTRmNjAtOTJmMy1lMDBhOWU5ZGNhMTkifQ.Yf3IwOIQbddvjc0v5QxIQDCBiFYfZASWGnaDIft6YQinSE8_S34NueuLrgv1ykV2ox4FFJhG0jE6vKyboXEHwmvAUmXlNTRTzltdWY9QXVhsqB1S3g8AMuz3WpS8WGzh3uKDTm4MDrpDBuVF2n6_PAliC83p4j4oOBl2jJqd56TUrfOZwHga7hR0zfxLUOSz8FtVBqAjJ2F4UYyq_zhz71ALrM_taS-6oAUkpuAjJ_slKK9GaDQUZDQCMOg1P_3ClRQIbgdqeKOxpYU_0TmS_MXuNUkqn06DJnY3kHNSkx40duq4DWN8PmrnygpXwdCdF2p6mczHtl1Gv_omYhMY5A'
+
+# Agora, faça uma chamada simples para listar suas fontes
+curl -X GET https://api.airbyte.com/v1/sources \
+  -H "Authorization: Bearer $AIRBYTE_API_KEY" \
+  -H "Content-Type: application/json"
+
+
+# -----  
+
+# 🔍 1. Para identificar o Destination ID:
+curl -X GET "https://api.airbyte.com/v1/destinations?workspaceIds=71262590-7a33-4874-8be1-d80cc8125c1c" \
+  -H "Authorization: Bearer $AIRBYTE_API_KEY" \
+  -H "Content-Type: application/json"
+
+
+# 🔍 2. Para identificar os Source IDs:
+curl -X GET "https://api.airbyte.com/v1/sources?workspaceIds=71262590-7a33-4874-8be1-d80cc8125c1c" \
+  -H "Authorization: Bearer $AIRBYTE_API_KEY" \
+  -H "Content-Type: application/json"
