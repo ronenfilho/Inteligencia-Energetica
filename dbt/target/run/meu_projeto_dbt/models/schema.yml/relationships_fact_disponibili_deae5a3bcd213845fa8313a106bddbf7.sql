@@ -9,13 +9,13 @@ select
 
 with child as (
     select id_dim_tempo as from_field
-    from LAB_PIPELINE.CORE.fact_disponibilidade
+    from IE_DB.CORE.fact_disponibilidade
     where id_dim_tempo is not null
 ),
 
 parent as (
     select id_dim_tempo as to_field
-    from LAB_PIPELINE.CORE.dim_tempo
+    from IE_DB.CORE.dim_tempo
 )
 
 select

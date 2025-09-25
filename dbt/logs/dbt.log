@@ -6632,3 +6632,456 @@ LEFT JOIN dim_tempo AS dti
 [0m04:52:53.353596 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x750c13802990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x750c138010d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x750c17128790>]}
 [0m04:52:53.354400 [debug] [MainThread]: Flushing usage events
 [0m04:52:54.375969 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:04:15.976002 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f2722d2090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f272743790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f2722d2f10>]}
+
+
+============================== 14:04:15.986599 | b1eb478a-307e-42f2-b256-b3603c07d7ae ==============================
+[0m14:04:15.986599 [info ] [MainThread]: Running with dbt=1.9.0
+[0m14:04:15.987984 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/usr/app/logs', 'debug': 'False', 'profiles_dir': '/root/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt test', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m14:04:16.609503 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b1eb478a-307e-42f2-b256-b3603c07d7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f270fa3250>]}
+[0m14:04:16.683450 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'b1eb478a-307e-42f2-b256-b3603c07d7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f2710eb590>]}
+[0m14:04:16.684750 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
+[0m14:04:16.832986 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m14:04:17.052966 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:04:17.053457 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:04:17.120161 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'b1eb478a-307e-42f2-b256-b3603c07d7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f270d53c50>]}
+[0m14:04:17.240578 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m14:04:17.249898 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m14:04:17.310964 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'b1eb478a-307e-42f2-b256-b3603c07d7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f270a8be90>]}
+[0m14:04:17.311649 [info ] [MainThread]: Found 5 models, 11 data tests, 3 sources, 583 macros
+[0m14:04:17.312136 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b1eb478a-307e-42f2-b256-b3603c07d7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f27116f6d0>]}
+[0m14:04:17.315033 [info ] [MainThread]: 
+[0m14:04:17.315569 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m14:04:17.316000 [info ] [MainThread]: 
+[0m14:04:17.316669 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m14:04:17.323126 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_CORE'
+[0m14:04:17.324527 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_STAGING'
+[0m14:04:17.502857 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_CORE"
+[0m14:04:17.503835 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_STAGING"
+[0m14:04:17.504578 [debug] [ThreadPool]: On list_IE_DB_CORE: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_CORE"} */
+show objects in IE_DB.CORE limit 10000;
+[0m14:04:17.505293 [debug] [ThreadPool]: On list_IE_DB_STAGING: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_STAGING"} */
+show objects in IE_DB.STAGING limit 10000;
+[0m14:04:17.506122 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:04:17.506735 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:04:21.885566 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 4.379 seconds
+[0m14:04:22.395557 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 4.889 seconds
+[0m14:04:22.402055 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b1eb478a-307e-42f2-b256-b3603c07d7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f270db35d0>]}
+[0m14:04:22.406187 [debug] [Thread-1 (]: Began running node test.meu_projeto_dbt.not_null_dim_localidade_id_dim_localidade.691eb5ec96
+[0m14:04:22.407155 [info ] [Thread-1 (]: 1 of 11 START test not_null_dim_localidade_id_dim_localidade ................... [RUN]
+[0m14:04:22.408161 [debug] [Thread-2 (]: Began running node test.meu_projeto_dbt.not_null_dim_tempo_id_dim_tempo.d8c1157619
+[0m14:04:22.408994 [debug] [Thread-3 (]: Began running node test.meu_projeto_dbt.not_null_dim_usina_id_dim_usina.71635c0b66
+[0m14:04:22.410416 [debug] [Thread-4 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_disp_id_subsistema.25bd1f1f18
+[0m14:04:22.414005 [info ] [Thread-3 (]: 3 of 11 START test not_null_dim_usina_id_dim_usina ............................. [RUN]
+[0m14:04:22.412869 [info ] [Thread-2 (]: 2 of 11 START test not_null_dim_tempo_id_dim_tempo ............................. [RUN]
+[0m14:04:22.411636 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_IE_DB_CORE, now test.meu_projeto_dbt.not_null_dim_localidade_id_dim_localidade.691eb5ec96)
+[0m14:04:22.416531 [debug] [Thread-3 (]: Acquiring new snowflake connection 'test.meu_projeto_dbt.not_null_dim_usina_id_dim_usina.71635c0b66'
+[0m14:04:22.415168 [info ] [Thread-4 (]: 4 of 11 START test not_null_stg_usina_disp_id_subsistema ....................... [RUN]
+[0m14:04:22.417786 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_IE_DB_STAGING, now test.meu_projeto_dbt.not_null_dim_tempo_id_dim_tempo.d8c1157619)
+[0m14:04:22.418745 [debug] [Thread-1 (]: Began compiling node test.meu_projeto_dbt.not_null_dim_localidade_id_dim_localidade.691eb5ec96
+[0m14:04:22.419659 [debug] [Thread-3 (]: Began compiling node test.meu_projeto_dbt.not_null_dim_usina_id_dim_usina.71635c0b66
+[0m14:04:22.420911 [debug] [Thread-4 (]: Acquiring new snowflake connection 'test.meu_projeto_dbt.not_null_stg_usina_disp_id_subsistema.25bd1f1f18'
+[0m14:04:22.421871 [debug] [Thread-2 (]: Began compiling node test.meu_projeto_dbt.not_null_dim_tempo_id_dim_tempo.d8c1157619
+[0m14:04:22.448840 [debug] [Thread-4 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_disp_id_subsistema.25bd1f1f18
+[0m14:04:22.510616 [debug] [Thread-2 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_dim_tempo_id_dim_tempo.d8c1157619"
+[0m14:04:22.514563 [debug] [Thread-1 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_dim_localidade_id_dim_localidade.691eb5ec96"
+[0m14:04:22.525441 [debug] [Thread-1 (]: Began executing node test.meu_projeto_dbt.not_null_dim_localidade_id_dim_localidade.691eb5ec96
+[0m14:04:22.523426 [debug] [Thread-3 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_dim_usina_id_dim_usina.71635c0b66"
+[0m14:04:22.522223 [debug] [Thread-4 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_disp_id_subsistema.25bd1f1f18"
+[0m14:04:22.533123 [debug] [Thread-3 (]: Began executing node test.meu_projeto_dbt.not_null_dim_usina_id_dim_usina.71635c0b66
+[0m14:04:22.534562 [debug] [Thread-4 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_disp_id_subsistema.25bd1f1f18
+[0m14:04:22.535671 [debug] [Thread-2 (]: Began executing node test.meu_projeto_dbt.not_null_dim_tempo_id_dim_tempo.d8c1157619
+[0m14:04:22.659590 [debug] [Thread-2 (]: Writing runtime sql for node "test.meu_projeto_dbt.not_null_dim_tempo_id_dim_tempo.d8c1157619"
+[0m14:04:22.660659 [debug] [Thread-4 (]: Writing runtime sql for node "test.meu_projeto_dbt.not_null_stg_usina_disp_id_subsistema.25bd1f1f18"
+[0m14:04:22.661495 [debug] [Thread-1 (]: Writing runtime sql for node "test.meu_projeto_dbt.not_null_dim_localidade_id_dim_localidade.691eb5ec96"
+[0m14:04:22.661805 [debug] [Thread-3 (]: Writing runtime sql for node "test.meu_projeto_dbt.not_null_dim_usina_id_dim_usina.71635c0b66"
+[0m14:04:22.663461 [debug] [Thread-4 (]: Using snowflake connection "test.meu_projeto_dbt.not_null_stg_usina_disp_id_subsistema.25bd1f1f18"
+[0m14:04:22.664820 [debug] [Thread-4 (]: On test.meu_projeto_dbt.not_null_stg_usina_disp_id_subsistema.25bd1f1f18: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "test.meu_projeto_dbt.not_null_stg_usina_disp_id_subsistema.25bd1f1f18"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select id_subsistema
+from IE_DB.STAGING.stg_usina_disp
+where id_subsistema is null
+
+
+
+      
+    ) dbt_internal_test
+[0m14:04:22.666003 [debug] [Thread-2 (]: Using snowflake connection "test.meu_projeto_dbt.not_null_dim_tempo_id_dim_tempo.d8c1157619"
+[0m14:04:22.667150 [debug] [Thread-1 (]: Using snowflake connection "test.meu_projeto_dbt.not_null_dim_localidade_id_dim_localidade.691eb5ec96"
+[0m14:04:22.667811 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m14:04:22.668664 [debug] [Thread-3 (]: Using snowflake connection "test.meu_projeto_dbt.not_null_dim_usina_id_dim_usina.71635c0b66"
+[0m14:04:22.669267 [debug] [Thread-2 (]: On test.meu_projeto_dbt.not_null_dim_tempo_id_dim_tempo.d8c1157619: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "test.meu_projeto_dbt.not_null_dim_tempo_id_dim_tempo.d8c1157619"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select id_dim_tempo
+from IE_DB.CORE.dim_tempo
+where id_dim_tempo is null
+
+
+
+      
+    ) dbt_internal_test
+[0m14:04:22.673766 [debug] [Thread-3 (]: On test.meu_projeto_dbt.not_null_dim_usina_id_dim_usina.71635c0b66: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "test.meu_projeto_dbt.not_null_dim_usina_id_dim_usina.71635c0b66"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select id_dim_usina
+from IE_DB.CORE.dim_usina
+where id_dim_usina is null
+
+
+
+      
+    ) dbt_internal_test
+[0m14:04:22.677702 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m14:04:22.669841 [debug] [Thread-1 (]: On test.meu_projeto_dbt.not_null_dim_localidade_id_dim_localidade.691eb5ec96: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "test.meu_projeto_dbt.not_null_dim_localidade_id_dim_localidade.691eb5ec96"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select id_dim_localidade
+from IE_DB.CORE.dim_localidade
+where id_dim_localidade is null
+
+
+
+      
+    ) dbt_internal_test
+[0m14:04:24.067221 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.399 seconds
+[0m14:04:24.085361 [info ] [Thread-4 (]: 4 of 11 PASS not_null_stg_usina_disp_id_subsistema ............................. [[32mPASS[0m in 1.66s]
+[0m14:04:24.087125 [debug] [Thread-4 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_disp_id_subsistema.25bd1f1f18
+[0m14:04:24.088281 [debug] [Thread-4 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_disp_instante.d747b953e1
+[0m14:04:24.089563 [info ] [Thread-4 (]: 5 of 11 START test not_null_stg_usina_disp_instante ............................ [RUN]
+[0m14:04:24.091340 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.meu_projeto_dbt.not_null_stg_usina_disp_id_subsistema.25bd1f1f18, now test.meu_projeto_dbt.not_null_stg_usina_disp_instante.d747b953e1)
+[0m14:04:24.092284 [debug] [Thread-4 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_disp_instante.d747b953e1
+[0m14:04:24.103738 [debug] [Thread-4 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_disp_instante.d747b953e1"
+[0m14:04:24.105022 [debug] [Thread-4 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_disp_instante.d747b953e1
+[0m14:04:24.114611 [debug] [Thread-4 (]: Writing runtime sql for node "test.meu_projeto_dbt.not_null_stg_usina_disp_instante.d747b953e1"
+[0m14:04:24.116550 [debug] [Thread-4 (]: Using snowflake connection "test.meu_projeto_dbt.not_null_stg_usina_disp_instante.d747b953e1"
+[0m14:04:24.117411 [debug] [Thread-4 (]: On test.meu_projeto_dbt.not_null_stg_usina_disp_instante.d747b953e1: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "test.meu_projeto_dbt.not_null_stg_usina_disp_instante.d747b953e1"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select instante
+from IE_DB.STAGING.stg_usina_disp
+where instante is null
+
+
+
+      
+    ) dbt_internal_test
+[0m14:04:24.301600 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.183 seconds
+[0m14:04:24.304395 [info ] [Thread-4 (]: 5 of 11 PASS not_null_stg_usina_disp_instante .................................. [[32mPASS[0m in 0.21s]
+[0m14:04:24.305753 [debug] [Thread-4 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_disp_instante.d747b953e1
+[0m14:04:24.306448 [debug] [Thread-4 (]: Began running node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_.15933e51b1
+[0m14:04:24.307202 [info ] [Thread-4 (]: 6 of 11 START test relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_  [RUN]
+[0m14:04:24.308056 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.meu_projeto_dbt.not_null_stg_usina_disp_instante.d747b953e1, now test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_.15933e51b1)
+[0m14:04:24.308812 [debug] [Thread-4 (]: Began compiling node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_.15933e51b1
+[0m14:04:24.321976 [debug] [Thread-4 (]: Writing injected SQL for node "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_.15933e51b1"
+[0m14:04:24.323263 [debug] [Thread-4 (]: Began executing node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_.15933e51b1
+[0m14:04:24.328929 [debug] [Thread-4 (]: Writing runtime sql for node "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_.15933e51b1"
+[0m14:04:24.330856 [debug] [Thread-4 (]: Using snowflake connection "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_.15933e51b1"
+[0m14:04:24.331641 [debug] [Thread-4 (]: On test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_.15933e51b1: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_.15933e51b1"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with child as (
+    select id_dim_localidade as from_field
+    from IE_DB.CORE.fact_disponibilidade
+    where id_dim_localidade is not null
+),
+
+parent as (
+    select id_dim_localidade as to_field
+    from IE_DB.CORE.dim_localidade
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+      
+    ) dbt_internal_test
+[0m14:04:24.684825 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 2.004 seconds
+[0m14:04:24.688521 [info ] [Thread-1 (]: 1 of 11 PASS not_null_dim_localidade_id_dim_localidade ......................... [[32mPASS[0m in 2.28s]
+[0m14:04:24.690549 [debug] [Thread-1 (]: Finished running node test.meu_projeto_dbt.not_null_dim_localidade_id_dim_localidade.691eb5ec96
+[0m14:04:24.691837 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 2.014 seconds
+[0m14:04:24.692583 [debug] [Thread-1 (]: Began running node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07
+[0m14:04:24.695595 [info ] [Thread-3 (]: 3 of 11 PASS not_null_dim_usina_id_dim_usina ................................... [[32mPASS[0m in 2.28s]
+[0m14:04:24.696714 [info ] [Thread-1 (]: 7 of 11 START test relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_  [RUN]
+[0m14:04:24.697943 [debug] [Thread-3 (]: Finished running node test.meu_projeto_dbt.not_null_dim_usina_id_dim_usina.71635c0b66
+[0m14:04:24.698715 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.meu_projeto_dbt.not_null_dim_localidade_id_dim_localidade.691eb5ec96, now test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07)
+[0m14:04:24.699574 [debug] [Thread-3 (]: Began running node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757
+[0m14:04:24.700342 [debug] [Thread-1 (]: Began compiling node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07
+[0m14:04:24.701120 [info ] [Thread-3 (]: 8 of 11 START test relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_  [RUN]
+[0m14:04:24.713184 [debug] [Thread-1 (]: Writing injected SQL for node "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07"
+[0m14:04:24.714054 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.meu_projeto_dbt.not_null_dim_usina_id_dim_usina.71635c0b66, now test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757)
+[0m14:04:24.714951 [debug] [Thread-3 (]: Began compiling node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757
+[0m14:04:24.720894 [debug] [Thread-1 (]: Began executing node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07
+[0m14:04:24.725545 [debug] [Thread-3 (]: Writing injected SQL for node "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757"
+[0m14:04:24.731218 [debug] [Thread-1 (]: Writing runtime sql for node "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07"
+[0m14:04:24.732521 [debug] [Thread-3 (]: Began executing node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757
+[0m14:04:24.735279 [debug] [Thread-1 (]: Using snowflake connection "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07"
+[0m14:04:24.741206 [debug] [Thread-3 (]: Writing runtime sql for node "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757"
+[0m14:04:24.742225 [debug] [Thread-1 (]: On test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with child as (
+    select id_dim_tempo as from_field
+    from IE_DB.CORE.fact_disponibilidade
+    where id_dim_tempo is not null
+),
+
+parent as (
+    select id_dim_tempo as to_field
+    from IE_DB.CORE.dim_tempo
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+      
+    ) dbt_internal_test
+[0m14:04:24.746555 [debug] [Thread-3 (]: Using snowflake connection "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757"
+[0m14:04:24.747443 [debug] [Thread-3 (]: On test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with child as (
+    select id_dim_usina as from_field
+    from IE_DB.CORE.fact_disponibilidade
+    where id_dim_usina is not null
+),
+
+parent as (
+    select id_dim_usina as to_field
+    from IE_DB.CORE.dim_usina
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+      
+    ) dbt_internal_test
+[0m14:04:24.817825 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 2.143 seconds
+[0m14:04:24.820586 [info ] [Thread-2 (]: 2 of 11 PASS not_null_dim_tempo_id_dim_tempo ................................... [[32mPASS[0m in 2.40s]
+[0m14:04:24.821749 [debug] [Thread-2 (]: Finished running node test.meu_projeto_dbt.not_null_dim_tempo_id_dim_tempo.d8c1157619
+[0m14:04:24.822467 [debug] [Thread-2 (]: Began running node test.meu_projeto_dbt.unique_dim_localidade_id_dim_localidade.ff520a4426
+[0m14:04:24.823212 [info ] [Thread-2 (]: 9 of 11 START test unique_dim_localidade_id_dim_localidade ..................... [RUN]
+[0m14:04:24.824045 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.meu_projeto_dbt.not_null_dim_tempo_id_dim_tempo.d8c1157619, now test.meu_projeto_dbt.unique_dim_localidade_id_dim_localidade.ff520a4426)
+[0m14:04:24.824712 [debug] [Thread-2 (]: Began compiling node test.meu_projeto_dbt.unique_dim_localidade_id_dim_localidade.ff520a4426
+[0m14:04:24.834173 [debug] [Thread-2 (]: Writing injected SQL for node "test.meu_projeto_dbt.unique_dim_localidade_id_dim_localidade.ff520a4426"
+[0m14:04:24.835152 [debug] [Thread-2 (]: Began executing node test.meu_projeto_dbt.unique_dim_localidade_id_dim_localidade.ff520a4426
+[0m14:04:24.839222 [debug] [Thread-2 (]: Writing runtime sql for node "test.meu_projeto_dbt.unique_dim_localidade_id_dim_localidade.ff520a4426"
+[0m14:04:24.840713 [debug] [Thread-2 (]: Using snowflake connection "test.meu_projeto_dbt.unique_dim_localidade_id_dim_localidade.ff520a4426"
+[0m14:04:24.841343 [debug] [Thread-2 (]: On test.meu_projeto_dbt.unique_dim_localidade_id_dim_localidade.ff520a4426: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "test.meu_projeto_dbt.unique_dim_localidade_id_dim_localidade.ff520a4426"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    id_dim_localidade as unique_field,
+    count(*) as n_records
+
+from IE_DB.CORE.dim_localidade
+where id_dim_localidade is not null
+group by id_dim_localidade
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m14:04:25.426146 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.584 seconds
+[0m14:04:25.430345 [info ] [Thread-2 (]: 9 of 11 PASS unique_dim_localidade_id_dim_localidade ........................... [[32mPASS[0m in 0.61s]
+[0m14:04:25.431850 [debug] [Thread-2 (]: Finished running node test.meu_projeto_dbt.unique_dim_localidade_id_dim_localidade.ff520a4426
+[0m14:04:25.432840 [debug] [Thread-2 (]: Began running node test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055
+[0m14:04:25.433863 [info ] [Thread-2 (]: 10 of 11 START test unique_dim_tempo_id_dim_tempo .............................. [RUN]
+[0m14:04:25.434682 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.meu_projeto_dbt.unique_dim_localidade_id_dim_localidade.ff520a4426, now test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055)
+[0m14:04:25.435352 [debug] [Thread-2 (]: Began compiling node test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055
+[0m14:04:25.442958 [debug] [Thread-2 (]: Writing injected SQL for node "test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055"
+[0m14:04:25.443837 [debug] [Thread-2 (]: Began executing node test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055
+[0m14:04:25.447357 [debug] [Thread-2 (]: Writing runtime sql for node "test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055"
+[0m14:04:25.448690 [debug] [Thread-2 (]: Using snowflake connection "test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055"
+[0m14:04:25.449319 [debug] [Thread-2 (]: On test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    id_dim_tempo as unique_field,
+    count(*) as n_records
+
+from IE_DB.CORE.dim_tempo
+where id_dim_tempo is not null
+group by id_dim_tempo
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m14:04:25.936039 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.603 seconds
+[0m14:04:25.938607 [info ] [Thread-4 (]: 6 of 11 PASS relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_  [[32mPASS[0m in 1.63s]
+[0m14:04:25.939692 [debug] [Thread-4 (]: Finished running node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_.15933e51b1
+[0m14:04:25.940257 [debug] [Thread-4 (]: Began running node test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357
+[0m14:04:25.940968 [info ] [Thread-4 (]: 11 of 11 START test unique_dim_usina_id_dim_usina .............................. [RUN]
+[0m14:04:25.941677 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_localidade__id_dim_localidade__ref_dim_localidade_.15933e51b1, now test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357)
+[0m14:04:25.942226 [debug] [Thread-4 (]: Began compiling node test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357
+[0m14:04:25.948016 [debug] [Thread-4 (]: Writing injected SQL for node "test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357"
+[0m14:04:25.948975 [debug] [Thread-4 (]: Began executing node test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357
+[0m14:04:25.952699 [debug] [Thread-4 (]: Writing runtime sql for node "test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357"
+[0m14:04:25.954178 [debug] [Thread-4 (]: Using snowflake connection "test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357"
+[0m14:04:25.954798 [debug] [Thread-4 (]: On test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    id_dim_usina as unique_field,
+    count(*) as n_records
+
+from IE_DB.CORE.dim_usina
+where id_dim_usina is not null
+group by id_dim_usina
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m14:04:26.416914 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.967 seconds
+[0m14:04:26.421117 [info ] [Thread-2 (]: 10 of 11 PASS unique_dim_tempo_id_dim_tempo .................................... [[32mPASS[0m in 0.99s]
+[0m14:04:26.422668 [debug] [Thread-2 (]: Finished running node test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055
+[0m14:04:26.465306 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.717 seconds
+[0m14:04:26.469612 [info ] [Thread-3 (]: 8 of 11 PASS relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_  [[32mPASS[0m in 1.76s]
+[0m14:04:26.471354 [debug] [Thread-3 (]: Finished running node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757
+[0m14:04:26.883138 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 2.139 seconds
+[0m14:04:26.889129 [info ] [Thread-1 (]: 7 of 11 PASS relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_  [[32mPASS[0m in 2.19s]
+[0m14:04:26.891337 [debug] [Thread-1 (]: Finished running node test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07
+[0m14:04:26.918940 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.964 seconds
+[0m14:04:26.924288 [info ] [Thread-4 (]: 11 of 11 PASS unique_dim_usina_id_dim_usina .................................... [[32mPASS[0m in 0.98s]
+[0m14:04:26.926486 [debug] [Thread-4 (]: Finished running node test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357
+[0m14:04:26.929233 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:04:26.929761 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07' was left open.
+[0m14:04:26.930210 [debug] [MainThread]: On test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_tempo__id_dim_tempo__ref_dim_tempo_.0497dc3e07: Close
+[0m14:04:27.092532 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055' was left open.
+[0m14:04:27.093557 [debug] [MainThread]: On test.meu_projeto_dbt.unique_dim_tempo_id_dim_tempo.f7f1cec055: Close
+[0m14:04:27.249820 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757' was left open.
+[0m14:04:27.250787 [debug] [MainThread]: On test.meu_projeto_dbt.relationships_fact_disponibilidade_id_dim_usina__id_dim_usina__ref_dim_usina_.a251c61757: Close
+[0m14:04:27.425630 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357' was left open.
+[0m14:04:27.426525 [debug] [MainThread]: On test.meu_projeto_dbt.unique_dim_usina_id_dim_usina.777e53d357: Close
+[0m14:04:27.576187 [info ] [MainThread]: 
+[0m14:04:27.577491 [info ] [MainThread]: Finished running 11 data tests in 0 hours 0 minutes and 10.26 seconds (10.26s).
+[0m14:04:27.584258 [debug] [MainThread]: Command end result
+[0m14:04:27.651794 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m14:04:27.653997 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m14:04:27.664019 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/target/run_results.json
+[0m14:04:27.664466 [info ] [MainThread]: 
+[0m14:04:27.665040 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m14:04:27.665535 [info ] [MainThread]: 
+[0m14:04:27.666047 [info ] [MainThread]: Done. PASS=11 WARN=0 ERROR=0 SKIP=0 TOTAL=11
+[0m14:04:27.669192 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 11.786084, "process_in_blocks": "134432", "process_kernel_time": 1.483168, "process_mem_max_rss": "139244", "process_out_blocks": "8744", "process_user_time": 5.554143}
+[0m14:04:27.669832 [debug] [MainThread]: Command `dbt test` succeeded at 14:04:27.669702 after 11.79 seconds
+[0m14:04:27.670266 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f2720f7f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f2722a2f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f275a6c910>]}
+[0m14:04:27.670760 [debug] [MainThread]: Flushing usage events
+[0m14:04:28.449995 [debug] [MainThread]: An error was encountered while trying to flush usage events
