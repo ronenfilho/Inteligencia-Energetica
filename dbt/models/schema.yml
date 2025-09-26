@@ -36,16 +36,28 @@ models:
 
   # Testes para o modelo de staging de geração
   - name: stg_usina_geracao
+    description: "Union dinâmico de todas as tabelas de geração de usina"
     columns:
+      - name: mes_referencia
+        description: "Mês de referência extraído do nome da tabela"
+        tests: [not_null]
       - name: instante
+        description: "Data e hora da medição"
         tests: [not_null]
       - name: id_subsistema
+        description: "Identificador do subsistema"
         tests: [not_null]
       - name: val_geracao_mw
-        tests: [not_null]
+        description: "Valor de geração em MW (pode ser nulo quando usina não está gerando)"
+        # Valores nulos são permitidos - teste personalizado em tests/assert_val_geracao_non_negative.sql
       - name: ceg
+        description: "Código da usina geradora"
         tests: [not_null]
       - name: id_ons
+        description: "Identificador ONS"
+        tests: [not_null]
+      - name: source_table_name
+        description: "Nome da tabela de origem dos dados"
         tests: [not_null]
 
   # Testes para o modelo de staging de geração - somente GO
