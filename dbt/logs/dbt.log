@@ -7085,3 +7085,1851 @@ having count(*) > 1
 [0m14:04:27.670266 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f2720f7f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f2722a2f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77f275a6c910>]}
 [0m14:04:27.670760 [debug] [MainThread]: Flushing usage events
 [0m14:04:28.449995 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:19:11.519321 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926e9ce810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926e9ccf10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926e9ce150>]}
+
+
+============================== 17:19:11.528078 | ebbc9ad8-d7b3-4356-82f7-0ee2e7a698da ==============================
+[0m17:19:11.528078 [info ] [MainThread]: Running with dbt=1.9.0
+[0m17:19:11.528867 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': '/usr/app/logs', 'fail_fast': 'False', 'profiles_dir': '/root/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'invocation_command': 'dbt run --select stg_usina_geracao', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m17:19:12.278297 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ebbc9ad8-d7b3-4356-82f7-0ee2e7a698da', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926ea21bd0>]}
+[0m17:19:12.439401 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ebbc9ad8-d7b3-4356-82f7-0ee2e7a698da', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926d9cad10>]}
+[0m17:19:12.441381 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
+[0m17:19:12.682176 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m17:19:12.940466 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 1 files changed.
+[0m17:19:12.941304 [debug] [MainThread]: Partial parsing: added file: meu_projeto_dbt://models/staging/stg_usina_geracao.sql
+[0m17:19:12.942651 [debug] [MainThread]: Partial parsing: updated file: meu_projeto_dbt://models/schema.yml
+[0m17:19:13.984196 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ebbc9ad8-d7b3-4356-82f7-0ee2e7a698da', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926d8a7d90>]}
+[0m17:19:14.121961 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:19:14.130768 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:19:14.175482 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ebbc9ad8-d7b3-4356-82f7-0ee2e7a698da', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926d90df10>]}
+[0m17:19:14.176317 [info ] [MainThread]: Found 6 models, 16 data tests, 12 sources, 583 macros
+[0m17:19:14.176968 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ebbc9ad8-d7b3-4356-82f7-0ee2e7a698da', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926da184d0>]}
+[0m17:19:14.179556 [info ] [MainThread]: 
+[0m17:19:14.180221 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:19:14.180834 [info ] [MainThread]: 
+[0m17:19:14.181790 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m17:19:14.183335 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB'
+[0m17:19:14.265097 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB"
+[0m17:19:14.265601 [debug] [ThreadPool]: On list_IE_DB: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB"} */
+show terse schemas in database IE_DB
+    limit 10000
+[0m17:19:14.266000 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:19:17.250880 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 2.985 seconds
+[0m17:19:17.261943 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_IE_DB, now list_IE_DB_STAGING)
+[0m17:19:17.262887 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_CORE'
+[0m17:19:17.277880 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_STAGING"
+[0m17:19:17.281655 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_CORE"
+[0m17:19:17.282303 [debug] [ThreadPool]: On list_IE_DB_STAGING: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_STAGING"} */
+show objects in IE_DB.STAGING limit 10000;
+[0m17:19:17.282891 [debug] [ThreadPool]: On list_IE_DB_CORE: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_CORE"} */
+show objects in IE_DB.CORE limit 10000;
+[0m17:19:17.284260 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:19:17.536485 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 0.253 seconds
+[0m17:19:18.793104 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 1.509 seconds
+[0m17:19:18.797580 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ebbc9ad8-d7b3-4356-82f7-0ee2e7a698da', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926c223190>]}
+[0m17:19:18.800902 [debug] [Thread-1 (]: Began running node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:19:18.801761 [info ] [Thread-1 (]: 1 of 1 START sql view model STAGING.stg_usina_geracao .......................... [RUN]
+[0m17:19:18.802696 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_IE_DB_CORE, now model.meu_projeto_dbt.stg_usina_geracao)
+[0m17:19:18.803597 [debug] [Thread-1 (]: Began compiling node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:19:18.821472 [debug] [Thread-1 (]: Writing injected SQL for node "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:19:18.822441 [debug] [Thread-1 (]: Began executing node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:19:18.878191 [debug] [Thread-1 (]: Writing runtime sql for node "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:19:18.893618 [debug] [Thread-1 (]: Using snowflake connection "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:19:18.895234 [debug] [Thread-1 (]: On model.meu_projeto_dbt.stg_usina_geracao: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "model.meu_projeto_dbt.stg_usina_geracao"} */
+create or replace   view IE_DB.STAGING.stg_usina_geracao
+  
+   as (
+    -- models/stg_usina_geracao.sql
+
+-- Bloco de dados para Janeiro de 2025
+SELECT
+    '2025-01-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_01
+
+UNION ALL
+
+-- Bloco de dados para Fevereiro de 2025
+SELECT
+    '2025-02-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_02
+
+UNION ALL
+
+-- Bloco de dados para Março de 2025
+SELECT
+    '2025-03-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_03
+
+UNION ALL
+
+-- Bloco de dados para Abril de 2025
+SELECT
+    '2025-04-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_04
+
+UNION ALL
+
+-- Bloco de dados para Maio de 2025
+SELECT
+    '2025-05-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_05
+
+UNION ALL
+
+-- Bloco de dados para Junho de 2025
+SELECT
+    '2025-06-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_06
+
+UNION ALL
+
+-- Bloco de dados para Julho de 2025
+SELECT
+    '2025-07-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_07
+
+UNION ALL
+
+-- Bloco de dados para Agosto de 2025
+SELECT
+    '2025-08-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_08
+
+UNION ALL
+
+-- Bloco de dados para Setembro de 2025
+SELECT
+    '2025-09-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_09
+  );
+[0m17:19:19.169074 [debug] [Thread-1 (]: Snowflake adapter: Snowflake query id: 01bf502f-0001-0485-0000-be41000710a2
+[0m17:19:19.169677 [debug] [Thread-1 (]: Snowflake adapter: Snowflake error: 002003 (42S02): SQL compilation error:
+Object 'IE_DB.STAGING.GERACAO_USINA_2_2025_01' does not exist or not authorized.
+[0m17:19:19.176785 [debug] [Thread-1 (]: Database Error in model stg_usina_geracao (models/staging/stg_usina_geracao.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'IE_DB.STAGING.GERACAO_USINA_2_2025_01' does not exist or not authorized.
+  compiled code at target/run/meu_projeto_dbt/models/staging/stg_usina_geracao.sql
+[0m17:19:19.180807 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ebbc9ad8-d7b3-4356-82f7-0ee2e7a698da', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9267b65e50>]}
+[0m17:19:19.182435 [error] [Thread-1 (]: 1 of 1 ERROR creating sql view model STAGING.stg_usina_geracao ................. [[31mERROR[0m in 0.38s]
+[0m17:19:19.183978 [debug] [Thread-1 (]: Finished running node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:19:19.185214 [debug] [Thread-7 (]: Marking all children of 'model.meu_projeto_dbt.stg_usina_geracao' to be skipped because of status 'error'.  Reason: Database Error in model stg_usina_geracao (models/staging/stg_usina_geracao.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'IE_DB.STAGING.GERACAO_USINA_2_2025_01' does not exist or not authorized.
+  compiled code at target/run/meu_projeto_dbt/models/staging/stg_usina_geracao.sql.
+[0m17:19:19.188059 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:19:19.188549 [debug] [MainThread]: Connection 'list_IE_DB_STAGING' was left open.
+[0m17:19:19.188948 [debug] [MainThread]: On list_IE_DB_STAGING: Close
+[0m17:19:19.352320 [debug] [MainThread]: Connection 'model.meu_projeto_dbt.stg_usina_geracao' was left open.
+[0m17:19:19.353124 [debug] [MainThread]: On model.meu_projeto_dbt.stg_usina_geracao: Close
+[0m17:19:19.499101 [info ] [MainThread]: 
+[0m17:19:19.500027 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 5.32 seconds (5.32s).
+[0m17:19:19.501777 [debug] [MainThread]: Command end result
+[0m17:19:19.563417 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:19:19.565875 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:19:19.574605 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/target/run_results.json
+[0m17:19:19.575120 [info ] [MainThread]: 
+[0m17:19:19.575739 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m17:19:19.576367 [info ] [MainThread]: 
+[0m17:19:19.577201 [error] [MainThread]:   Database Error in model stg_usina_geracao (models/staging/stg_usina_geracao.sql)
+  002003 (42S02): SQL compilation error:
+  Object 'IE_DB.STAGING.GERACAO_USINA_2_2025_01' does not exist or not authorized.
+  compiled code at target/run/meu_projeto_dbt/models/staging/stg_usina_geracao.sql
+[0m17:19:19.577871 [info ] [MainThread]: 
+[0m17:19:19.578651 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
+[0m17:19:19.581597 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 8.134097, "process_in_blocks": "119752", "process_kernel_time": 0.856639, "process_mem_max_rss": "136604", "process_out_blocks": "8040", "process_user_time": 5.192873}
+[0m17:19:19.584398 [debug] [MainThread]: Command `dbt run` failed at 17:19:19.584091 after 8.14 seconds
+[0m17:19:19.585477 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926eb70b10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926e9effd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a926e9efc50>]}
+[0m17:19:19.586498 [debug] [MainThread]: Flushing usage events
+[0m17:19:20.354929 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:20:56.672391 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c302cb3410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c302cf7890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c302cb0610>]}
+
+
+============================== 17:20:56.679824 | 37e883eb-9cda-4eaf-98b2-bd68a30c839a ==============================
+[0m17:20:56.679824 [info ] [MainThread]: Running with dbt=1.9.0
+[0m17:20:56.680699 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/usr/app/logs', 'version_check': 'True', 'profiles_dir': '/root/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'invocation_command': 'dbt run-operation show_tables --args {schema: staging}', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m17:20:57.081828 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '37e883eb-9cda-4eaf-98b2-bd68a30c839a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c301a79990>]}
+[0m17:20:57.157426 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '37e883eb-9cda-4eaf-98b2-bd68a30c839a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c303a25350>]}
+[0m17:20:57.158650 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
+[0m17:20:57.302570 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m17:20:57.467369 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:20:57.467837 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:20:57.534912 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '37e883eb-9cda-4eaf-98b2-bd68a30c839a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c3017a7b50>]}
+[0m17:20:57.689701 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:20:57.694332 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:20:57.713926 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '37e883eb-9cda-4eaf-98b2-bd68a30c839a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c301bfee50>]}
+[0m17:20:57.714651 [info ] [MainThread]: Found 6 models, 16 data tests, 12 sources, 583 macros
+[0m17:20:57.715193 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '37e883eb-9cda-4eaf-98b2-bd68a30c839a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c301ab8810>]}
+[0m17:20:57.716116 [debug] [MainThread]: Acquiring new snowflake connection 'macro_show_tables'
+[0m17:20:57.716926 [error] [MainThread]: Encountered an error while running operation: Runtime Error
+  dbt could not find a macro with the name "show_tables" in any package
+[0m17:20:57.718425 [debug] [MainThread]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/dbt/task/run_operation.py", line 67, in run
+    self._run_unsafe(package_name, macro_name)
+  File "/usr/local/lib/python3.11/site-packages/dbt/task/run_operation.py", line 48, in _run_unsafe
+    res = adapter.execute_macro(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/dbt/adapters/base/impl.py", line 1176, in execute_macro
+    raise DbtRuntimeError(
+dbt_common.exceptions.base.DbtRuntimeError: Runtime Error
+  dbt could not find a macro with the name "show_tables" in any package
+
+[0m17:20:57.718993 [error] [MainThread]: Encountered an error:
+Internal Error
+  dbt could not find a macro with the name 'show_tables' in any package
+[0m17:20:57.720395 [debug] [MainThread]: Resource report: {"command_name": "run-operation", "command_success": false, "command_wall_clock_time": 1.1116382, "process_in_blocks": "288", "process_kernel_time": 0.398177, "process_mem_max_rss": "114224", "process_out_blocks": "3104", "process_user_time": 2.617595}
+[0m17:20:57.721184 [debug] [MainThread]: Command `dbt run-operation` failed at 17:20:57.721028 after 1.11 seconds
+[0m17:20:57.721611 [debug] [MainThread]: Connection 'macro_show_tables' was properly closed.
+[0m17:20:57.722045 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c302cb4b10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c302cb2bd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73c302cb3050>]}
+[0m17:20:57.722627 [debug] [MainThread]: Flushing usage events
+[0m17:20:58.516138 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:21:21.435204 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75449cd75ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75449d2e2050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75449d011c90>]}
+
+
+============================== 17:21:21.445982 | 6f2f776a-9ff0-4d36-a891-5b5e1a956c89 ==============================
+[0m17:21:21.445982 [info ] [MainThread]: Running with dbt=1.9.0
+[0m17:21:21.447447 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/root/.dbt', 'debug': 'False', 'version_check': 'True', 'log_path': '/usr/app/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt compile --select stg_usina_geracao', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m17:21:21.976024 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '6f2f776a-9ff0-4d36-a891-5b5e1a956c89', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75449cf30a10>]}
+[0m17:21:22.050250 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '6f2f776a-9ff0-4d36-a891-5b5e1a956c89', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75449bd7ea10>]}
+[0m17:21:22.051301 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
+[0m17:21:22.216017 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m17:21:22.387665 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:21:22.388155 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:21:22.458583 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '6f2f776a-9ff0-4d36-a891-5b5e1a956c89', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75449bc7aa90>]}
+[0m17:21:22.582525 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:21:22.586077 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:21:22.619245 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '6f2f776a-9ff0-4d36-a891-5b5e1a956c89', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75449be16890>]}
+[0m17:21:22.620007 [info ] [MainThread]: Found 6 models, 16 data tests, 12 sources, 583 macros
+[0m17:21:22.620515 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6f2f776a-9ff0-4d36-a891-5b5e1a956c89', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75449ba10210>]}
+[0m17:21:22.622806 [info ] [MainThread]: 
+[0m17:21:22.623343 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:21:22.623811 [info ] [MainThread]: 
+[0m17:21:22.624543 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m17:21:22.633748 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_STAGING'
+[0m17:21:22.635333 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_CORE'
+[0m17:21:22.803854 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_STAGING"
+[0m17:21:22.805632 [debug] [ThreadPool]: On list_IE_DB_STAGING: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_STAGING"} */
+show objects in IE_DB.STAGING limit 10000;
+[0m17:21:22.804768 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_CORE"
+[0m17:21:22.807276 [debug] [ThreadPool]: On list_IE_DB_CORE: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_CORE"} */
+show objects in IE_DB.CORE limit 10000;
+[0m17:21:22.807930 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:21:22.806447 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:21:27.046564 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 4.240 seconds
+[0m17:21:27.058558 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 4.251 seconds
+[0m17:21:27.063188 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6f2f776a-9ff0-4d36-a891-5b5e1a956c89', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75449bda4550>]}
+[0m17:21:27.082559 [debug] [Thread-1 (]: Began running node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:21:27.083294 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_IE_DB_CORE, now model.meu_projeto_dbt.stg_usina_geracao)
+[0m17:21:27.083770 [debug] [Thread-1 (]: Began compiling node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:21:27.096687 [debug] [Thread-1 (]: Writing injected SQL for node "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:21:27.097559 [debug] [Thread-1 (]: Began executing node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:21:27.098609 [debug] [Thread-1 (]: Finished running node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:21:27.099854 [debug] [Thread-3 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_geracao_ceg.b1e498a467
+[0m17:21:27.100390 [debug] [Thread-4 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_geracao_id_ons.1d4c3be71b
+[0m17:21:27.101096 [debug] [Thread-2 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_geracao_id_subsistema.caab261c87
+[0m17:21:27.101862 [debug] [Thread-1 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_geracao_instante.4bba5e7ea5
+[0m17:21:27.102809 [debug] [Thread-3 (]: Acquiring new snowflake connection 'test.meu_projeto_dbt.not_null_stg_usina_geracao_ceg.b1e498a467'
+[0m17:21:27.103691 [debug] [Thread-4 (]: Acquiring new snowflake connection 'test.meu_projeto_dbt.not_null_stg_usina_geracao_id_ons.1d4c3be71b'
+[0m17:21:27.104375 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_IE_DB_STAGING, now test.meu_projeto_dbt.not_null_stg_usina_geracao_id_subsistema.caab261c87)
+[0m17:21:27.105091 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.meu_projeto_dbt.stg_usina_geracao, now test.meu_projeto_dbt.not_null_stg_usina_geracao_instante.4bba5e7ea5)
+[0m17:21:27.105860 [debug] [Thread-3 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_geracao_ceg.b1e498a467
+[0m17:21:27.106828 [debug] [Thread-4 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_geracao_id_ons.1d4c3be71b
+[0m17:21:27.107600 [debug] [Thread-2 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_geracao_id_subsistema.caab261c87
+[0m17:21:27.108655 [debug] [Thread-1 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_geracao_instante.4bba5e7ea5
+[0m17:21:27.130199 [debug] [Thread-3 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_geracao_ceg.b1e498a467"
+[0m17:21:27.139616 [debug] [Thread-4 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_geracao_id_ons.1d4c3be71b"
+[0m17:21:27.147374 [debug] [Thread-2 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_geracao_id_subsistema.caab261c87"
+[0m17:21:27.155876 [debug] [Thread-1 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_geracao_instante.4bba5e7ea5"
+[0m17:21:27.157086 [debug] [Thread-3 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_geracao_ceg.b1e498a467
+[0m17:21:27.157639 [debug] [Thread-4 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_geracao_id_ons.1d4c3be71b
+[0m17:21:27.158366 [debug] [Thread-2 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_geracao_id_subsistema.caab261c87
+[0m17:21:27.158878 [debug] [Thread-1 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_geracao_instante.4bba5e7ea5
+[0m17:21:27.159825 [debug] [Thread-3 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_geracao_ceg.b1e498a467
+[0m17:21:27.160680 [debug] [Thread-4 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_geracao_id_ons.1d4c3be71b
+[0m17:21:27.161927 [debug] [Thread-2 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_geracao_id_subsistema.caab261c87
+[0m17:21:27.163065 [debug] [Thread-1 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_geracao_instante.4bba5e7ea5
+[0m17:21:27.163813 [debug] [Thread-3 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_geracao_val_geracao_mw.0131eea510
+[0m17:21:27.165583 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.meu_projeto_dbt.not_null_stg_usina_geracao_ceg.b1e498a467, now test.meu_projeto_dbt.not_null_stg_usina_geracao_val_geracao_mw.0131eea510)
+[0m17:21:27.166383 [debug] [Thread-3 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_geracao_val_geracao_mw.0131eea510
+[0m17:21:27.174001 [debug] [Thread-3 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_geracao_val_geracao_mw.0131eea510"
+[0m17:21:27.174981 [debug] [Thread-3 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_geracao_val_geracao_mw.0131eea510
+[0m17:21:27.176152 [debug] [Thread-3 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_geracao_val_geracao_mw.0131eea510
+[0m17:21:27.178329 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:21:27.179236 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.not_null_stg_usina_geracao_id_subsistema.caab261c87' was left open.
+[0m17:21:27.179995 [debug] [MainThread]: On test.meu_projeto_dbt.not_null_stg_usina_geracao_id_subsistema.caab261c87: Close
+[0m17:21:27.339214 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.not_null_stg_usina_geracao_instante.4bba5e7ea5' was left open.
+[0m17:21:27.340150 [debug] [MainThread]: On test.meu_projeto_dbt.not_null_stg_usina_geracao_instante.4bba5e7ea5: Close
+[0m17:21:27.492002 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.not_null_stg_usina_geracao_val_geracao_mw.0131eea510' was properly closed.
+[0m17:21:27.492885 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.not_null_stg_usina_geracao_id_ons.1d4c3be71b' was properly closed.
+[0m17:21:27.496891 [debug] [MainThread]: Command end result
+[0m17:21:27.569104 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:21:27.571811 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:21:27.581283 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/target/run_results.json
+[0m17:21:27.581754 [debug] [MainThread]: Excluded node 'not_null_stg_usina_geracao_ceg' from results
+[0m17:21:27.582115 [debug] [MainThread]: Excluded node 'not_null_stg_usina_geracao_id_ons' from results
+[0m17:21:27.582451 [debug] [MainThread]: Excluded node 'not_null_stg_usina_geracao_id_subsistema' from results
+[0m17:21:27.582767 [debug] [MainThread]: Excluded node 'not_null_stg_usina_geracao_instante' from results
+[0m17:21:27.583102 [debug] [MainThread]: Excluded node 'not_null_stg_usina_geracao_val_geracao_mw' from results
+[0m17:21:27.583840 [info ] [MainThread]: Compiled node 'stg_usina_geracao' is:
+-- models/stg_usina_geracao.sql
+
+-- Bloco de dados para Janeiro de 2025
+SELECT
+    '2025-01-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_01
+
+UNION ALL
+
+-- Bloco de dados para Fevereiro de 2025
+SELECT
+    '2025-02-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_02
+
+UNION ALL
+
+-- Bloco de dados para Março de 2025
+SELECT
+    '2025-03-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_03
+
+UNION ALL
+
+-- Bloco de dados para Abril de 2025
+SELECT
+    '2025-04-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_04
+
+UNION ALL
+
+-- Bloco de dados para Maio de 2025
+SELECT
+    '2025-05-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_05
+
+UNION ALL
+
+-- Bloco de dados para Junho de 2025
+SELECT
+    '2025-06-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_06
+
+UNION ALL
+
+-- Bloco de dados para Julho de 2025
+SELECT
+    '2025-07-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_07
+
+UNION ALL
+
+-- Bloco de dados para Agosto de 2025
+SELECT
+    '2025-08-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_08
+
+UNION ALL
+
+-- Bloco de dados para Setembro de 2025
+SELECT
+    '2025-09-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.geracao_usina_2_2025_09
+[0m17:21:27.585993 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": true, "command_wall_clock_time": 6.2649193, "process_in_blocks": "0", "process_kernel_time": 1.333986, "process_mem_max_rss": "132244", "process_out_blocks": "8880", "process_user_time": 5.231048}
+[0m17:21:27.586734 [debug] [MainThread]: Command `dbt compile` succeeded at 17:21:27.586598 after 6.27 seconds
+[0m17:21:27.587347 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7544a06e8ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75449a47f110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7544a0845210>]}
+[0m17:21:27.587827 [debug] [MainThread]: Flushing usage events
+[0m17:21:28.401575 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:22:44.554319 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a50669899d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a5066f0a110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a506698b7d0>]}
+
+
+============================== 17:22:44.563900 | 3978271e-a465-45cf-8d9a-2de12fc19079 ==============================
+[0m17:22:44.563900 [info ] [MainThread]: Running with dbt=1.9.0
+[0m17:22:44.564866 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/usr/app/logs', 'version_check': 'True', 'profiles_dir': '/root/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'invocation_command': 'dbt run --select stg_usina_geracao', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m17:22:45.165681 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '3978271e-a465-45cf-8d9a-2de12fc19079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a5067751710>]}
+[0m17:22:45.245850 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '3978271e-a465-45cf-8d9a-2de12fc19079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a5067871290>]}
+[0m17:22:45.246924 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
+[0m17:22:45.410905 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m17:22:45.594584 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 2 files changed.
+[0m17:22:45.596419 [debug] [MainThread]: Partial parsing: updated file: meu_projeto_dbt://models/schema.yml
+[0m17:22:45.596990 [debug] [MainThread]: Partial parsing: updated file: meu_projeto_dbt://models/staging/stg_usina_geracao.sql
+[0m17:22:46.959824 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '3978271e-a465-45cf-8d9a-2de12fc19079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a506541ff50>]}
+[0m17:22:47.264071 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:22:47.270649 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:22:47.329779 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '3978271e-a465-45cf-8d9a-2de12fc19079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a5068c07cd0>]}
+[0m17:22:47.331070 [info ] [MainThread]: Found 6 models, 16 data tests, 12 sources, 583 macros
+[0m17:22:47.332289 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '3978271e-a465-45cf-8d9a-2de12fc19079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a50653e9bd0>]}
+[0m17:22:47.336172 [info ] [MainThread]: 
+[0m17:22:47.337338 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:22:47.338286 [info ] [MainThread]: 
+[0m17:22:47.339646 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m17:22:47.341999 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB'
+[0m17:22:47.490146 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB"
+[0m17:22:47.490997 [debug] [ThreadPool]: On list_IE_DB: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB"} */
+show terse schemas in database IE_DB
+    limit 10000
+[0m17:22:47.491698 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:22:50.490169 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 2.998 seconds
+[0m17:22:50.498261 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_IE_DB, now list_IE_DB_CORE)
+[0m17:22:50.499036 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_STAGING'
+[0m17:22:50.523253 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_CORE"
+[0m17:22:50.526623 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_STAGING"
+[0m17:22:50.527216 [debug] [ThreadPool]: On list_IE_DB_CORE: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_CORE"} */
+show objects in IE_DB.CORE limit 10000;
+[0m17:22:50.527854 [debug] [ThreadPool]: On list_IE_DB_STAGING: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_STAGING"} */
+show objects in IE_DB.STAGING limit 10000;
+[0m17:22:50.528903 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:22:50.688553 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 0.160 seconds
+[0m17:22:51.122332 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 0.593 seconds
+[0m17:22:51.131325 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '3978271e-a465-45cf-8d9a-2de12fc19079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a5064b032d0>]}
+[0m17:22:51.135006 [debug] [Thread-1 (]: Began running node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:22:51.136167 [info ] [Thread-1 (]: 1 of 1 START sql view model STAGING.stg_usina_geracao .......................... [RUN]
+[0m17:22:51.137200 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_IE_DB_STAGING, now model.meu_projeto_dbt.stg_usina_geracao)
+[0m17:22:51.138039 [debug] [Thread-1 (]: Began compiling node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:22:51.164037 [debug] [Thread-1 (]: Writing injected SQL for node "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:22:51.165341 [debug] [Thread-1 (]: Began executing node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:22:51.213542 [debug] [Thread-1 (]: Writing runtime sql for node "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:22:51.221288 [debug] [Thread-1 (]: Using snowflake connection "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:22:51.222283 [debug] [Thread-1 (]: On model.meu_projeto_dbt.stg_usina_geracao: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "model.meu_projeto_dbt.stg_usina_geracao"} */
+create or replace   view IE_DB.STAGING.stg_usina_geracao
+  
+   as (
+    -- models/stg_usina_geracao.sql
+
+-- Bloco de dados para Janeiro de 2025
+SELECT
+    '2025-01-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-01
+
+UNION ALL
+
+-- Bloco de dados para Fevereiro de 2025
+SELECT
+    '2025-02-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-02
+
+UNION ALL
+
+-- Bloco de dados para Março de 2025
+SELECT
+    '2025-03-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-03
+
+UNION ALL
+
+-- Bloco de dados para Abril de 2025
+SELECT
+    '2025-04-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-04
+
+UNION ALL
+
+-- Bloco de dados para Maio de 2025
+SELECT
+    '2025-05-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-05
+
+UNION ALL
+
+-- Bloco de dados para Junho de 2025
+SELECT
+    '2025-06-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-06
+
+UNION ALL
+
+-- Bloco de dados para Julho de 2025
+SELECT
+    '2025-07-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-07
+
+UNION ALL
+
+-- Bloco de dados para Agosto de 2025
+SELECT
+    '2025-08-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-08
+
+UNION ALL
+
+-- Bloco de dados para Setembro de 2025
+SELECT
+    '2025-09-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-09
+  );
+[0m17:22:51.348646 [debug] [Thread-1 (]: Snowflake adapter: Snowflake query id: 01bf5032-0001-0486-0000-be410007302a
+[0m17:22:51.350315 [debug] [Thread-1 (]: Snowflake adapter: Snowflake error: 001003 (42000): SQL compilation error:
+syntax error line 21 at position 39 unexpected '-'.
+syntax error line 40 at position 39 unexpected '-'.
+syntax error line 59 at position 39 unexpected '-'.
+syntax error line 78 at position 39 unexpected '-'.
+syntax error line 97 at position 39 unexpected '-'.
+syntax error line 116 at position 39 unexpected '-'.
+syntax error line 135 at position 39 unexpected '-'.
+syntax error line 154 at position 39 unexpected '-'.
+syntax error line 173 at position 39 unexpected '-'.
+[0m17:22:51.359877 [debug] [Thread-1 (]: Database Error in model stg_usina_geracao (models/staging/stg_usina_geracao.sql)
+  001003 (42000): SQL compilation error:
+  syntax error line 21 at position 39 unexpected '-'.
+  syntax error line 40 at position 39 unexpected '-'.
+  syntax error line 59 at position 39 unexpected '-'.
+  syntax error line 78 at position 39 unexpected '-'.
+  syntax error line 97 at position 39 unexpected '-'.
+  syntax error line 116 at position 39 unexpected '-'.
+  syntax error line 135 at position 39 unexpected '-'.
+  syntax error line 154 at position 39 unexpected '-'.
+  syntax error line 173 at position 39 unexpected '-'.
+  compiled code at target/run/meu_projeto_dbt/models/staging/stg_usina_geracao.sql
+[0m17:22:51.363626 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '3978271e-a465-45cf-8d9a-2de12fc19079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a50649a5090>]}
+[0m17:22:51.365381 [error] [Thread-1 (]: 1 of 1 ERROR creating sql view model STAGING.stg_usina_geracao ................. [[31mERROR[0m in 0.22s]
+[0m17:22:51.366887 [debug] [Thread-1 (]: Finished running node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:22:51.369998 [debug] [Thread-7 (]: Marking all children of 'model.meu_projeto_dbt.stg_usina_geracao' to be skipped because of status 'error'.  Reason: Database Error in model stg_usina_geracao (models/staging/stg_usina_geracao.sql)
+  001003 (42000): SQL compilation error:
+  syntax error line 21 at position 39 unexpected '-'.
+  syntax error line 40 at position 39 unexpected '-'.
+  syntax error line 59 at position 39 unexpected '-'.
+  syntax error line 78 at position 39 unexpected '-'.
+  syntax error line 97 at position 39 unexpected '-'.
+  syntax error line 116 at position 39 unexpected '-'.
+  syntax error line 135 at position 39 unexpected '-'.
+  syntax error line 154 at position 39 unexpected '-'.
+  syntax error line 173 at position 39 unexpected '-'.
+  compiled code at target/run/meu_projeto_dbt/models/staging/stg_usina_geracao.sql.
+[0m17:22:51.377973 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:22:51.378727 [debug] [MainThread]: Connection 'list_IE_DB_CORE' was left open.
+[0m17:22:51.380707 [debug] [MainThread]: On list_IE_DB_CORE: Close
+[0m17:22:51.534485 [debug] [MainThread]: Connection 'model.meu_projeto_dbt.stg_usina_geracao' was left open.
+[0m17:22:51.535092 [debug] [MainThread]: On model.meu_projeto_dbt.stg_usina_geracao: Close
+[0m17:22:51.696551 [info ] [MainThread]: 
+[0m17:22:51.697367 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 4.36 seconds (4.36s).
+[0m17:22:51.698623 [debug] [MainThread]: Command end result
+[0m17:22:51.745983 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:22:51.748520 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:22:51.756094 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/target/run_results.json
+[0m17:22:51.756550 [info ] [MainThread]: 
+[0m17:22:51.757187 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m17:22:51.757784 [info ] [MainThread]: 
+[0m17:22:51.758523 [error] [MainThread]:   Database Error in model stg_usina_geracao (models/staging/stg_usina_geracao.sql)
+  001003 (42000): SQL compilation error:
+  syntax error line 21 at position 39 unexpected '-'.
+  syntax error line 40 at position 39 unexpected '-'.
+  syntax error line 59 at position 39 unexpected '-'.
+  syntax error line 78 at position 39 unexpected '-'.
+  syntax error line 97 at position 39 unexpected '-'.
+  syntax error line 116 at position 39 unexpected '-'.
+  syntax error line 135 at position 39 unexpected '-'.
+  syntax error line 154 at position 39 unexpected '-'.
+  syntax error line 173 at position 39 unexpected '-'.
+  compiled code at target/run/meu_projeto_dbt/models/staging/stg_usina_geracao.sql
+[0m17:22:51.759134 [info ] [MainThread]: 
+[0m17:22:51.759746 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
+[0m17:22:51.761241 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 7.3205447, "process_in_blocks": "0", "process_kernel_time": 0.854381, "process_mem_max_rss": "137040", "process_out_blocks": "8056", "process_user_time": 5.434262}
+[0m17:22:51.762014 [debug] [MainThread]: Command `dbt run` failed at 17:22:51.761841 after 7.32 seconds
+[0m17:22:51.762501 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a50669abc10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a5066b30850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a5066fc0490>]}
+[0m17:22:51.763108 [debug] [MainThread]: Flushing usage events
+[0m17:22:53.132842 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:24:07.591454 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb7326c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb7327a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb7327550>]}
+
+
+============================== 17:24:07.599013 | 3b0d3d9c-027f-4f72-846b-4aa1f36d931b ==============================
+[0m17:24:07.599013 [info ] [MainThread]: Running with dbt=1.9.0
+[0m17:24:07.599815 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/root/.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': '/usr/app/logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt run --select stg_usina_geracao', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m17:24:08.160738 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '3b0d3d9c-027f-4f72-846b-4aa1f36d931b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb6095590>]}
+[0m17:24:08.274337 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '3b0d3d9c-027f-4f72-846b-4aa1f36d931b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb8069010>]}
+[0m17:24:08.275440 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
+[0m17:24:08.437800 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m17:24:08.608534 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 2 files changed.
+[0m17:24:08.610787 [debug] [MainThread]: Partial parsing: updated file: meu_projeto_dbt://models/schema.yml
+[0m17:24:08.611419 [debug] [MainThread]: Partial parsing: updated file: meu_projeto_dbt://models/staging/stg_usina_geracao.sql
+[0m17:24:09.434819 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '3b0d3d9c-027f-4f72-846b-4aa1f36d931b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb6061650>]}
+[0m17:24:09.580850 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:24:09.585399 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:24:09.623208 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '3b0d3d9c-027f-4f72-846b-4aa1f36d931b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb5c1ec90>]}
+[0m17:24:09.624169 [info ] [MainThread]: Found 6 models, 16 data tests, 12 sources, 583 macros
+[0m17:24:09.624796 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '3b0d3d9c-027f-4f72-846b-4aa1f36d931b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb515a850>]}
+[0m17:24:09.627739 [info ] [MainThread]: 
+[0m17:24:09.628450 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:24:09.629039 [info ] [MainThread]: 
+[0m17:24:09.629816 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m17:24:09.631135 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB'
+[0m17:24:09.689381 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB"
+[0m17:24:09.689848 [debug] [ThreadPool]: On list_IE_DB: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB"} */
+show terse schemas in database IE_DB
+    limit 10000
+[0m17:24:09.690181 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:24:11.998789 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 2.308 seconds
+[0m17:24:12.008959 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_IE_DB, now list_IE_DB_CORE)
+[0m17:24:12.009711 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_STAGING'
+[0m17:24:12.023607 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_CORE"
+[0m17:24:12.027017 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_STAGING"
+[0m17:24:12.027551 [debug] [ThreadPool]: On list_IE_DB_CORE: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_CORE"} */
+show objects in IE_DB.CORE limit 10000;
+[0m17:24:12.027949 [debug] [ThreadPool]: On list_IE_DB_STAGING: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_STAGING"} */
+show objects in IE_DB.STAGING limit 10000;
+[0m17:24:12.028790 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:24:12.213608 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 0.185 seconds
+[0m17:24:12.632007 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 0.603 seconds
+[0m17:24:12.647287 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '3b0d3d9c-027f-4f72-846b-4aa1f36d931b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb6212c90>]}
+[0m17:24:12.650849 [debug] [Thread-1 (]: Began running node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:24:12.652039 [info ] [Thread-1 (]: 1 of 1 START sql view model STAGING.stg_usina_geracao .......................... [RUN]
+[0m17:24:12.653125 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_IE_DB_STAGING, now model.meu_projeto_dbt.stg_usina_geracao)
+[0m17:24:12.653985 [debug] [Thread-1 (]: Began compiling node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:24:12.680416 [debug] [Thread-1 (]: Writing injected SQL for node "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:24:12.682008 [debug] [Thread-1 (]: Began executing node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:24:12.792612 [debug] [Thread-1 (]: Writing runtime sql for node "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:24:12.824572 [debug] [Thread-1 (]: Using snowflake connection "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:24:12.828079 [debug] [Thread-1 (]: On model.meu_projeto_dbt.stg_usina_geracao: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "model.meu_projeto_dbt.stg_usina_geracao"} */
+create or replace   view IE_DB.STAGING.stg_usina_geracao
+  
+   as (
+    -- models/stg_usina_geracao.sql
+
+-- Bloco de dados para Janeiro de 2025
+SELECT
+    '2025-01-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-01
+
+UNION ALL
+
+-- Bloco de dados para Fevereiro de 2025
+SELECT
+    '2025-02-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-02
+
+UNION ALL
+
+-- Bloco de dados para Março de 2025
+SELECT
+    '2025-03-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-03
+
+UNION ALL
+
+-- Bloco de dados para Abril de 2025
+SELECT
+    '2025-04-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-04
+
+UNION ALL
+
+-- Bloco de dados para Maio de 2025
+SELECT
+    '2025-05-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-05
+
+UNION ALL
+
+-- Bloco de dados para Junho de 2025
+SELECT
+    '2025-06-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-06
+
+UNION ALL
+
+-- Bloco de dados para Julho de 2025
+SELECT
+    '2025-07-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-07
+
+UNION ALL
+
+-- Bloco de dados para Agosto de 2025
+SELECT
+    '2025-08-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-08
+
+UNION ALL
+
+-- Bloco de dados para Setembro de 2025
+SELECT
+    '2025-09-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging.GERACAO_USINA_2_2025-09
+  );
+[0m17:24:12.991538 [debug] [Thread-1 (]: Snowflake adapter: Snowflake query id: 01bf5034-0001-047e-0000-be410007202e
+[0m17:24:12.992573 [debug] [Thread-1 (]: Snowflake adapter: Snowflake error: 001003 (42000): SQL compilation error:
+syntax error line 21 at position 39 unexpected '-'.
+syntax error line 40 at position 39 unexpected '-'.
+syntax error line 59 at position 39 unexpected '-'.
+syntax error line 78 at position 39 unexpected '-'.
+syntax error line 97 at position 39 unexpected '-'.
+syntax error line 116 at position 39 unexpected '-'.
+syntax error line 135 at position 39 unexpected '-'.
+syntax error line 154 at position 39 unexpected '-'.
+syntax error line 173 at position 39 unexpected '-'.
+[0m17:24:13.005541 [debug] [Thread-1 (]: Database Error in model stg_usina_geracao (models/staging/stg_usina_geracao.sql)
+  001003 (42000): SQL compilation error:
+  syntax error line 21 at position 39 unexpected '-'.
+  syntax error line 40 at position 39 unexpected '-'.
+  syntax error line 59 at position 39 unexpected '-'.
+  syntax error line 78 at position 39 unexpected '-'.
+  syntax error line 97 at position 39 unexpected '-'.
+  syntax error line 116 at position 39 unexpected '-'.
+  syntax error line 135 at position 39 unexpected '-'.
+  syntax error line 154 at position 39 unexpected '-'.
+  syntax error line 173 at position 39 unexpected '-'.
+  compiled code at target/run/meu_projeto_dbt/models/staging/stg_usina_geracao.sql
+[0m17:24:13.009648 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '3b0d3d9c-027f-4f72-846b-4aa1f36d931b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb51e9a50>]}
+[0m17:24:13.011262 [error] [Thread-1 (]: 1 of 1 ERROR creating sql view model STAGING.stg_usina_geracao ................. [[31mERROR[0m in 0.35s]
+[0m17:24:13.012906 [debug] [Thread-1 (]: Finished running node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:24:13.014900 [debug] [Thread-7 (]: Marking all children of 'model.meu_projeto_dbt.stg_usina_geracao' to be skipped because of status 'error'.  Reason: Database Error in model stg_usina_geracao (models/staging/stg_usina_geracao.sql)
+  001003 (42000): SQL compilation error:
+  syntax error line 21 at position 39 unexpected '-'.
+  syntax error line 40 at position 39 unexpected '-'.
+  syntax error line 59 at position 39 unexpected '-'.
+  syntax error line 78 at position 39 unexpected '-'.
+  syntax error line 97 at position 39 unexpected '-'.
+  syntax error line 116 at position 39 unexpected '-'.
+  syntax error line 135 at position 39 unexpected '-'.
+  syntax error line 154 at position 39 unexpected '-'.
+  syntax error line 173 at position 39 unexpected '-'.
+  compiled code at target/run/meu_projeto_dbt/models/staging/stg_usina_geracao.sql.
+[0m17:24:13.018898 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:24:13.019685 [debug] [MainThread]: Connection 'list_IE_DB_CORE' was left open.
+[0m17:24:13.020643 [debug] [MainThread]: On list_IE_DB_CORE: Close
+[0m17:24:13.172295 [debug] [MainThread]: Connection 'model.meu_projeto_dbt.stg_usina_geracao' was left open.
+[0m17:24:13.173063 [debug] [MainThread]: On model.meu_projeto_dbt.stg_usina_geracao: Close
+[0m17:24:13.321113 [info ] [MainThread]: 
+[0m17:24:13.321800 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 3.69 seconds (3.69s).
+[0m17:24:13.323077 [debug] [MainThread]: Command end result
+[0m17:24:13.368256 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:24:13.370372 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:24:13.377981 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/target/run_results.json
+[0m17:24:13.378427 [info ] [MainThread]: 
+[0m17:24:13.379094 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m17:24:13.379803 [info ] [MainThread]: 
+[0m17:24:13.380745 [error] [MainThread]:   Database Error in model stg_usina_geracao (models/staging/stg_usina_geracao.sql)
+  001003 (42000): SQL compilation error:
+  syntax error line 21 at position 39 unexpected '-'.
+  syntax error line 40 at position 39 unexpected '-'.
+  syntax error line 59 at position 39 unexpected '-'.
+  syntax error line 78 at position 39 unexpected '-'.
+  syntax error line 97 at position 39 unexpected '-'.
+  syntax error line 116 at position 39 unexpected '-'.
+  syntax error line 135 at position 39 unexpected '-'.
+  syntax error line 154 at position 39 unexpected '-'.
+  syntax error line 173 at position 39 unexpected '-'.
+  compiled code at target/run/meu_projeto_dbt/models/staging/stg_usina_geracao.sql
+[0m17:24:13.381507 [info ] [MainThread]: 
+[0m17:24:13.382169 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
+[0m17:24:13.383875 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 5.8559594, "process_in_blocks": "0", "process_kernel_time": 0.706243, "process_mem_max_rss": "137000", "process_out_blocks": "8048", "process_user_time": 4.532309}
+[0m17:24:13.384966 [debug] [MainThread]: Command `dbt run` failed at 17:24:13.384704 after 5.86 seconds
+[0m17:24:13.385741 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb732c9d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb7351090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b9bb7352cd0>]}
+[0m17:24:13.386480 [debug] [MainThread]: Flushing usage events
+[0m17:24:14.169166 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:24:52.794697 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cef9c4fd10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cef9c03790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cef9c03890>]}
+
+
+============================== 17:24:52.802397 | 6f128649-68ef-41c1-b7e0-16f3f1cfdf81 ==============================
+[0m17:24:52.802397 [info ] [MainThread]: Running with dbt=1.9.0
+[0m17:24:52.803371 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': '/usr/app/logs', 'fail_fast': 'False', 'profiles_dir': '/root/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt run --select stg_usina_geracao', 'send_anonymous_usage_stats': 'True'}
+[0m17:24:53.450722 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '6f128649-68ef-41c1-b7e0-16f3f1cfdf81', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cef89b1810>]}
+[0m17:24:53.545077 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '6f128649-68ef-41c1-b7e0-16f3f1cfdf81', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cef8a7aa10>]}
+[0m17:24:53.546340 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
+[0m17:24:53.734154 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m17:24:53.915913 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m17:24:53.917744 [debug] [MainThread]: Partial parsing: updated file: meu_projeto_dbt://models/schema.yml
+[0m17:24:54.958045 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '6f128649-68ef-41c1-b7e0-16f3f1cfdf81', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cef8ac1390>]}
+[0m17:24:55.082895 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:24:55.086778 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:24:55.118619 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '6f128649-68ef-41c1-b7e0-16f3f1cfdf81', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cefbcf9fd0>]}
+[0m17:24:55.119358 [info ] [MainThread]: Found 6 models, 16 data tests, 12 sources, 583 macros
+[0m17:24:55.119837 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6f128649-68ef-41c1-b7e0-16f3f1cfdf81', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cef7a3edd0>]}
+[0m17:24:55.122107 [info ] [MainThread]: 
+[0m17:24:55.122660 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:24:55.123148 [info ] [MainThread]: 
+[0m17:24:55.123829 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m17:24:55.125258 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB'
+[0m17:24:55.189219 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB"
+[0m17:24:55.189703 [debug] [ThreadPool]: On list_IE_DB: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB"} */
+show terse schemas in database IE_DB
+    limit 10000
+[0m17:24:55.190082 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:24:57.527842 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 2.338 seconds
+[0m17:24:57.536764 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_IE_DB, now list_IE_DB_STAGING)
+[0m17:24:57.543311 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_CORE'
+[0m17:24:57.555321 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_STAGING"
+[0m17:24:57.560468 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_CORE"
+[0m17:24:57.561224 [debug] [ThreadPool]: On list_IE_DB_STAGING: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_STAGING"} */
+show objects in IE_DB.STAGING limit 10000;
+[0m17:24:57.561906 [debug] [ThreadPool]: On list_IE_DB_CORE: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_CORE"} */
+show objects in IE_DB.CORE limit 10000;
+[0m17:24:57.563290 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:24:57.873030 [debug] [ThreadPool]: SQL status: SUCCESS 25 in 0.310 seconds
+[0m17:24:58.726950 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 1.164 seconds
+[0m17:24:58.731735 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6f128649-68ef-41c1-b7e0-16f3f1cfdf81', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cef7ac0e50>]}
+[0m17:24:58.734916 [debug] [Thread-1 (]: Began running node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:24:58.735979 [info ] [Thread-1 (]: 1 of 1 START sql view model STAGING.stg_usina_geracao .......................... [RUN]
+[0m17:24:58.736976 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_IE_DB_CORE, now model.meu_projeto_dbt.stg_usina_geracao)
+[0m17:24:58.737804 [debug] [Thread-1 (]: Began compiling node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:24:58.754908 [debug] [Thread-1 (]: Writing injected SQL for node "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:24:58.755999 [debug] [Thread-1 (]: Began executing node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:24:58.828420 [debug] [Thread-1 (]: Writing runtime sql for node "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:24:58.836519 [debug] [Thread-1 (]: Using snowflake connection "model.meu_projeto_dbt.stg_usina_geracao"
+[0m17:24:58.837653 [debug] [Thread-1 (]: On model.meu_projeto_dbt.stg_usina_geracao: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "model.meu_projeto_dbt.stg_usina_geracao"} */
+create or replace   view IE_DB.STAGING.stg_usina_geracao
+  
+   as (
+    -- models/stg_usina_geracao.sql
+
+-- Bloco de dados para Janeiro de 2025
+SELECT
+    '2025-01-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging."GERACAO_USINA_2_2025-01"
+
+UNION ALL
+
+-- Bloco de dados para Fevereiro de 2025
+SELECT
+    '2025-02-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging."GERACAO_USINA_2_2025-02"
+
+UNION ALL
+
+-- Bloco de dados para Março de 2025
+SELECT
+    '2025-03-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging."GERACAO_USINA_2_2025-03"
+
+UNION ALL
+
+-- Bloco de dados para Abril de 2025
+SELECT
+    '2025-04-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging."GERACAO_USINA_2_2025-04"
+
+UNION ALL
+
+-- Bloco de dados para Maio de 2025
+SELECT
+    '2025-05-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging."GERACAO_USINA_2_2025-05"
+
+UNION ALL
+
+-- Bloco de dados para Junho de 2025
+SELECT
+    '2025-06-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging."GERACAO_USINA_2_2025-06"
+
+UNION ALL
+
+-- Bloco de dados para Julho de 2025
+SELECT
+    '2025-07-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging."GERACAO_USINA_2_2025-07"
+
+UNION ALL
+
+-- Bloco de dados para Agosto de 2025
+SELECT
+    '2025-08-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging."GERACAO_USINA_2_2025-08"
+
+UNION ALL
+
+-- Bloco de dados para Setembro de 2025
+SELECT
+    '2025-09-01'::DATE AS mes_referencia,
+    id_subsistema::STRING AS id_subsistema,
+    nom_subsistema::STRING AS nom_subsistema,
+    id_estado::STRING AS id_estado,
+    nom_estado::STRING AS nom_estado,
+    id_ons::STRING AS id_ons,
+    ceg::STRING AS ceg,
+    nom_usina::STRING AS nom_usina,
+    nom_tipousina::STRING AS nom_tipousina,
+    nom_tipocombustivel::STRING AS nom_tipocombustivel,
+    cod_modalidadeoperacao::STRING AS cod_modalidadeoperacao,
+    din_instante::TIMESTAMP AS instante,
+    val_geracao::NUMBER(38, 5) AS val_geracao_mw
+FROM IE_DB.staging."GERACAO_USINA_2_2025-09"
+  );
+[0m17:24:59.249885 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 0.411 seconds
+[0m17:24:59.283643 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6f128649-68ef-41c1-b7e0-16f3f1cfdf81', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cef7abea50>]}
+[0m17:24:59.285024 [info ] [Thread-1 (]: 1 of 1 OK created sql view model STAGING.stg_usina_geracao ..................... [[32mSUCCESS 1[0m in 0.54s]
+[0m17:24:59.286301 [debug] [Thread-1 (]: Finished running node model.meu_projeto_dbt.stg_usina_geracao
+[0m17:24:59.289041 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:24:59.289636 [debug] [MainThread]: Connection 'list_IE_DB_STAGING' was left open.
+[0m17:24:59.290417 [debug] [MainThread]: On list_IE_DB_STAGING: Close
+[0m17:24:59.440903 [debug] [MainThread]: Connection 'model.meu_projeto_dbt.stg_usina_geracao' was left open.
+[0m17:24:59.441810 [debug] [MainThread]: On model.meu_projeto_dbt.stg_usina_geracao: Close
+[0m17:24:59.590506 [info ] [MainThread]: 
+[0m17:24:59.591698 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 4.47 seconds (4.47s).
+[0m17:24:59.594146 [debug] [MainThread]: Command end result
+[0m17:24:59.669873 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:24:59.672407 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:24:59.680853 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/target/run_results.json
+[0m17:24:59.681322 [info ] [MainThread]: 
+[0m17:24:59.682035 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:24:59.682548 [info ] [MainThread]: 
+[0m17:24:59.683113 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m17:24:59.684500 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 6.9604893, "process_in_blocks": "0", "process_kernel_time": 0.808953, "process_mem_max_rss": "136000", "process_out_blocks": "8048", "process_user_time": 5.197426}
+[0m17:24:59.685249 [debug] [MainThread]: Command `dbt run` succeeded at 17:24:59.685095 after 6.96 seconds
+[0m17:24:59.685755 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cef9c59a50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cef9c58ed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71cefd3b8a50>]}
+[0m17:24:59.686266 [debug] [MainThread]: Flushing usage events
+[0m17:25:00.424264 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:29:09.711691 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea261ffd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea29ce110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea29ce250>]}
+
+
+============================== 17:29:09.723288 | cc93fc78-95eb-4a29-8188-975029f9c12c ==============================
+[0m17:29:09.723288 [info ] [MainThread]: Running with dbt=1.9.0
+[0m17:29:09.724513 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/usr/app/logs', 'profiles_dir': '/root/.dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt run --select stg_usina_geracao_go', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m17:29:10.225273 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'cc93fc78-95eb-4a29-8188-975029f9c12c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea13af610>]}
+[0m17:29:10.298986 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'cc93fc78-95eb-4a29-8188-975029f9c12c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea33650d0>]}
+[0m17:29:10.300037 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
+[0m17:29:10.447292 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m17:29:10.610983 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 1 files changed.
+[0m17:29:10.611731 [debug] [MainThread]: Partial parsing: added file: meu_projeto_dbt://models/staging/stg_usina_geracao_go.sql
+[0m17:29:10.612404 [debug] [MainThread]: Partial parsing: updated file: meu_projeto_dbt://models/schema.yml
+[0m17:29:11.353266 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'cc93fc78-95eb-4a29-8188-975029f9c12c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea372fe10>]}
+[0m17:29:11.511009 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:29:11.515149 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:29:11.555981 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'cc93fc78-95eb-4a29-8188-975029f9c12c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea113f650>]}
+[0m17:29:11.556778 [info ] [MainThread]: Found 7 models, 22 data tests, 12 sources, 583 macros
+[0m17:29:11.557482 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'cc93fc78-95eb-4a29-8188-975029f9c12c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea13d49d0>]}
+[0m17:29:11.560547 [info ] [MainThread]: 
+[0m17:29:11.561329 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:29:11.562169 [info ] [MainThread]: 
+[0m17:29:11.563881 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m17:29:11.566078 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB'
+[0m17:29:11.632793 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB"
+[0m17:29:11.633391 [debug] [ThreadPool]: On list_IE_DB: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB"} */
+show terse schemas in database IE_DB
+    limit 10000
+[0m17:29:11.633850 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:29:14.107807 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 2.474 seconds
+[0m17:29:14.116548 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_IE_DB, now list_IE_DB_STAGING)
+[0m17:29:14.117559 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_CORE'
+[0m17:29:14.132134 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_STAGING"
+[0m17:29:14.137902 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_CORE"
+[0m17:29:14.138737 [debug] [ThreadPool]: On list_IE_DB_STAGING: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_STAGING"} */
+show objects in IE_DB.STAGING limit 10000;
+[0m17:29:14.139356 [debug] [ThreadPool]: On list_IE_DB_CORE: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_CORE"} */
+show objects in IE_DB.CORE limit 10000;
+[0m17:29:14.140668 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:29:14.276046 [debug] [ThreadPool]: SQL status: SUCCESS 26 in 0.136 seconds
+[0m17:29:15.439468 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 1.299 seconds
+[0m17:29:15.443417 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'cc93fc78-95eb-4a29-8188-975029f9c12c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea1059d50>]}
+[0m17:29:15.447196 [debug] [Thread-1 (]: Began running node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:29:15.448052 [info ] [Thread-1 (]: 1 of 1 START sql view model STAGING.stg_usina_geracao_go ....................... [RUN]
+[0m17:29:15.448904 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_IE_DB_CORE, now model.meu_projeto_dbt.stg_usina_geracao_go)
+[0m17:29:15.449504 [debug] [Thread-1 (]: Began compiling node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:29:15.463810 [debug] [Thread-1 (]: Writing injected SQL for node "model.meu_projeto_dbt.stg_usina_geracao_go"
+[0m17:29:15.464729 [debug] [Thread-1 (]: Began executing node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:29:15.507588 [debug] [Thread-1 (]: Writing runtime sql for node "model.meu_projeto_dbt.stg_usina_geracao_go"
+[0m17:29:15.509138 [debug] [Thread-1 (]: Using snowflake connection "model.meu_projeto_dbt.stg_usina_geracao_go"
+[0m17:29:15.509770 [debug] [Thread-1 (]: On model.meu_projeto_dbt.stg_usina_geracao_go: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "model.meu_projeto_dbt.stg_usina_geracao_go"} */
+create or replace   view IE_DB.STAGING.stg_usina_geracao_go
+  
+   as (
+    -- models/stg_usina_geracao_go.sql
+-- Dados de geração das usinas do estado de Goiás (GO)
+
+SELECT 
+    mes_referencia,
+    id_subsistema,
+    nom_subsistema,
+    id_estado,
+    nom_estado,
+    id_ons,
+    ceg,
+    nom_usina,
+    nom_tipousina,
+    nom_tipocombustivel,
+    cod_modalidadeoperacao,
+    instante,
+    val_geracao_mw
+FROM IE_DB.STAGING.stg_usina_geracao
+WHERE id_estado = 'GO'
+  );
+[0m17:29:16.025327 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 0.515 seconds
+[0m17:29:16.058604 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'cc93fc78-95eb-4a29-8188-975029f9c12c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea0ed0350>]}
+[0m17:29:16.059654 [info ] [Thread-1 (]: 1 of 1 OK created sql view model STAGING.stg_usina_geracao_go .................. [[32mSUCCESS 1[0m in 0.61s]
+[0m17:29:16.060683 [debug] [Thread-1 (]: Finished running node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:29:16.062506 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:29:16.063056 [debug] [MainThread]: Connection 'list_IE_DB_STAGING' was left open.
+[0m17:29:16.063457 [debug] [MainThread]: On list_IE_DB_STAGING: Close
+[0m17:29:16.223836 [debug] [MainThread]: Connection 'model.meu_projeto_dbt.stg_usina_geracao_go' was left open.
+[0m17:29:16.224702 [debug] [MainThread]: On model.meu_projeto_dbt.stg_usina_geracao_go: Close
+[0m17:29:16.374339 [info ] [MainThread]: 
+[0m17:29:16.375138 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 4.81 seconds (4.81s).
+[0m17:29:16.376401 [debug] [MainThread]: Command end result
+[0m17:29:16.423068 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:29:16.425173 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:29:16.432885 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/target/run_results.json
+[0m17:29:16.433355 [info ] [MainThread]: 
+[0m17:29:16.434025 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:29:16.434601 [info ] [MainThread]: 
+[0m17:29:16.435199 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m17:29:16.436581 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 6.8206983, "process_in_blocks": "0", "process_kernel_time": 0.757354, "process_mem_max_rss": "135044", "process_out_blocks": "8096", "process_user_time": 4.719285}
+[0m17:29:16.437284 [debug] [MainThread]: Command `dbt run` succeeded at 17:29:16.437140 after 6.82 seconds
+[0m17:29:16.437715 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea249fdd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea3374c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5ea5dc0a50>]}
+[0m17:29:16.438185 [debug] [MainThread]: Flushing usage events
+[0m17:29:17.359462 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:31:24.908033 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a487b790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a48c3ed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a4878c10>]}
+
+
+============================== 17:31:24.915429 | e1c9aef8-51f0-4bfb-b25d-252c0d23efc5 ==============================
+[0m17:31:24.915429 [info ] [MainThread]: Running with dbt=1.9.0
+[0m17:31:24.916250 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/usr/app/logs', 'debug': 'False', 'profiles_dir': '/root/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt compile --select stg_usina_geracao_go', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m17:31:25.322123 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'e1c9aef8-51f0-4bfb-b25d-252c0d23efc5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a472cf90>]}
+[0m17:31:25.407897 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'e1c9aef8-51f0-4bfb-b25d-252c0d23efc5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a36f70d0>]}
+[0m17:31:25.408999 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
+[0m17:31:25.607269 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m17:31:25.847086 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 3 files added, 0 files changed.
+[0m17:31:25.847843 [debug] [MainThread]: Partial parsing: added file: meu_projeto_dbt://models/exports/export_geracao_go.sql
+[0m17:31:25.848265 [debug] [MainThread]: Partial parsing: added file: meu_projeto_dbt://macros/export_csv.sql
+[0m17:31:25.848647 [debug] [MainThread]: Partial parsing: added file: meu_projeto_dbt://macros/export_operations.sql
+[0m17:31:26.252371 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'e1c9aef8-51f0-4bfb-b25d-252c0d23efc5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a30e4f50>]}
+[0m17:31:26.479441 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:31:26.483764 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:31:26.512669 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'e1c9aef8-51f0-4bfb-b25d-252c0d23efc5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a3308950>]}
+[0m17:31:26.513407 [info ] [MainThread]: Found 8 models, 22 data tests, 12 sources, 585 macros
+[0m17:31:26.513908 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e1c9aef8-51f0-4bfb-b25d-252c0d23efc5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a3324110>]}
+[0m17:31:26.516452 [info ] [MainThread]: 
+[0m17:31:26.517049 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:31:26.517539 [info ] [MainThread]: 
+[0m17:31:26.518438 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m17:31:26.525194 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_RAW'
+[0m17:31:26.525966 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_STAGING'
+[0m17:31:26.532098 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_CORE'
+[0m17:31:26.634606 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_RAW"
+[0m17:31:26.635327 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_STAGING"
+[0m17:31:26.635891 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_CORE"
+[0m17:31:26.636372 [debug] [ThreadPool]: On list_IE_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_RAW"} */
+show objects in IE_DB.RAW limit 10000;
+[0m17:31:26.636791 [debug] [ThreadPool]: On list_IE_DB_STAGING: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_STAGING"} */
+show objects in IE_DB.STAGING limit 10000;
+[0m17:31:26.637309 [debug] [ThreadPool]: On list_IE_DB_CORE: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_CORE"} */
+show objects in IE_DB.CORE limit 10000;
+[0m17:31:26.637961 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:31:26.638375 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:31:26.638745 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:31:29.405100 [debug] [ThreadPool]: SQL status: SUCCESS 27 in 2.767 seconds
+[0m17:31:32.699460 [debug] [ThreadPool]: Snowflake adapter: Snowflake query id: 01bf503b-0001-0490-0000-be410006f0c2
+[0m17:31:32.700113 [debug] [ThreadPool]: Snowflake adapter: Snowflake error: 002043 (02000): SQL compilation error:
+Object does not exist, or operation cannot be performed.
+[0m17:31:32.700863 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_relations_without_caching
+[0m17:31:32.701349 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m17:31:33.330292 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 6.691 seconds
+[0m17:31:33.334995 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e1c9aef8-51f0-4bfb-b25d-252c0d23efc5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a0db2b50>]}
+[0m17:31:33.349369 [debug] [Thread-1 (]: Began running node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:31:33.350146 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_IE_DB_CORE, now model.meu_projeto_dbt.stg_usina_geracao_go)
+[0m17:31:33.350714 [debug] [Thread-1 (]: Began compiling node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:31:33.361878 [debug] [Thread-1 (]: Writing injected SQL for node "model.meu_projeto_dbt.stg_usina_geracao_go"
+[0m17:31:33.362896 [debug] [Thread-1 (]: Began executing node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:31:33.363949 [debug] [Thread-1 (]: Finished running node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:31:33.365373 [debug] [Thread-3 (]: Began running node test.meu_projeto_dbt.accepted_values_stg_usina_geracao_go_id_estado__GO.d2bf367cea
+[0m17:31:33.365890 [debug] [Thread-4 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_ceg.6d2a36f71f
+[0m17:31:33.366360 [debug] [Thread-2 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_estado.867a5fb733
+[0m17:31:33.366947 [debug] [Thread-1 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_ons.85186db73f
+[0m17:31:33.367660 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly list_IE_DB_STAGING, now test.meu_projeto_dbt.accepted_values_stg_usina_geracao_go_id_estado__GO.d2bf367cea)
+[0m17:31:33.368392 [debug] [Thread-4 (]: Acquiring new snowflake connection 'test.meu_projeto_dbt.not_null_stg_usina_geracao_go_ceg.6d2a36f71f'
+[0m17:31:33.368928 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_IE_DB_RAW, now test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_estado.867a5fb733)
+[0m17:31:33.369487 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.meu_projeto_dbt.stg_usina_geracao_go, now test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_ons.85186db73f)
+[0m17:31:33.370045 [debug] [Thread-3 (]: Began compiling node test.meu_projeto_dbt.accepted_values_stg_usina_geracao_go_id_estado__GO.d2bf367cea
+[0m17:31:33.370546 [debug] [Thread-4 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_ceg.6d2a36f71f
+[0m17:31:33.371013 [debug] [Thread-2 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_estado.867a5fb733
+[0m17:31:33.371450 [debug] [Thread-1 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_ons.85186db73f
+[0m17:31:33.387600 [debug] [Thread-3 (]: Writing injected SQL for node "test.meu_projeto_dbt.accepted_values_stg_usina_geracao_go_id_estado__GO.d2bf367cea"
+[0m17:31:33.399584 [debug] [Thread-4 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_geracao_go_ceg.6d2a36f71f"
+[0m17:31:33.405509 [debug] [Thread-2 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_estado.867a5fb733"
+[0m17:31:33.414427 [debug] [Thread-1 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_ons.85186db73f"
+[0m17:31:33.415794 [debug] [Thread-3 (]: Began executing node test.meu_projeto_dbt.accepted_values_stg_usina_geracao_go_id_estado__GO.d2bf367cea
+[0m17:31:33.416449 [debug] [Thread-4 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_ceg.6d2a36f71f
+[0m17:31:33.417679 [debug] [Thread-2 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_estado.867a5fb733
+[0m17:31:33.418272 [debug] [Thread-1 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_ons.85186db73f
+[0m17:31:33.419443 [debug] [Thread-3 (]: Finished running node test.meu_projeto_dbt.accepted_values_stg_usina_geracao_go_id_estado__GO.d2bf367cea
+[0m17:31:33.420662 [debug] [Thread-4 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_ceg.6d2a36f71f
+[0m17:31:33.421591 [debug] [Thread-2 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_estado.867a5fb733
+[0m17:31:33.422746 [debug] [Thread-1 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_ons.85186db73f
+[0m17:31:33.423489 [debug] [Thread-3 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_instante.65becc7d29
+[0m17:31:33.424308 [debug] [Thread-4 (]: Began running node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_val_geracao_mw.ac3ef483f9
+[0m17:31:33.425457 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.meu_projeto_dbt.accepted_values_stg_usina_geracao_go_id_estado__GO.d2bf367cea, now test.meu_projeto_dbt.not_null_stg_usina_geracao_go_instante.65becc7d29)
+[0m17:31:33.426081 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.meu_projeto_dbt.not_null_stg_usina_geracao_go_ceg.6d2a36f71f, now test.meu_projeto_dbt.not_null_stg_usina_geracao_go_val_geracao_mw.ac3ef483f9)
+[0m17:31:33.426596 [debug] [Thread-3 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_instante.65becc7d29
+[0m17:31:33.427060 [debug] [Thread-4 (]: Began compiling node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_val_geracao_mw.ac3ef483f9
+[0m17:31:33.432603 [debug] [Thread-3 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_geracao_go_instante.65becc7d29"
+[0m17:31:33.438393 [debug] [Thread-4 (]: Writing injected SQL for node "test.meu_projeto_dbt.not_null_stg_usina_geracao_go_val_geracao_mw.ac3ef483f9"
+[0m17:31:33.439333 [debug] [Thread-3 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_instante.65becc7d29
+[0m17:31:33.439787 [debug] [Thread-4 (]: Began executing node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_val_geracao_mw.ac3ef483f9
+[0m17:31:33.440768 [debug] [Thread-3 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_instante.65becc7d29
+[0m17:31:33.441677 [debug] [Thread-4 (]: Finished running node test.meu_projeto_dbt.not_null_stg_usina_geracao_go_val_geracao_mw.ac3ef483f9
+[0m17:31:33.443389 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:31:33.444025 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_estado.867a5fb733' was left open.
+[0m17:31:33.444567 [debug] [MainThread]: On test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_estado.867a5fb733: Close
+[0m17:31:33.611532 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.not_null_stg_usina_geracao_go_instante.65becc7d29' was left open.
+[0m17:31:33.612175 [debug] [MainThread]: On test.meu_projeto_dbt.not_null_stg_usina_geracao_go_instante.65becc7d29: Close
+[0m17:31:33.761776 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_ons.85186db73f' was left open.
+[0m17:31:33.762639 [debug] [MainThread]: On test.meu_projeto_dbt.not_null_stg_usina_geracao_go_id_ons.85186db73f: Close
+[0m17:31:33.922849 [debug] [MainThread]: Connection 'test.meu_projeto_dbt.not_null_stg_usina_geracao_go_val_geracao_mw.ac3ef483f9' was properly closed.
+[0m17:31:33.927148 [debug] [MainThread]: Command end result
+[0m17:31:34.007609 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:31:34.009977 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:31:34.019749 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/target/run_results.json
+[0m17:31:34.020328 [debug] [MainThread]: Excluded node 'accepted_values_stg_usina_geracao_go_id_estado__GO' from results
+[0m17:31:34.020652 [debug] [MainThread]: Excluded node 'not_null_stg_usina_geracao_go_ceg' from results
+[0m17:31:34.020947 [debug] [MainThread]: Excluded node 'not_null_stg_usina_geracao_go_id_estado' from results
+[0m17:31:34.021246 [debug] [MainThread]: Excluded node 'not_null_stg_usina_geracao_go_id_ons' from results
+[0m17:31:34.021528 [debug] [MainThread]: Excluded node 'not_null_stg_usina_geracao_go_instante' from results
+[0m17:31:34.021805 [debug] [MainThread]: Excluded node 'not_null_stg_usina_geracao_go_val_geracao_mw' from results
+[0m17:31:34.022192 [info ] [MainThread]: Compiled node 'stg_usina_geracao_go' is:
+-- models/stg_usina_geracao_go.sql
+-- Dados de geração das usinas do estado de Goiás (GO)
+
+SELECT 
+    mes_referencia,
+    id_subsistema,
+    nom_subsistema,
+    id_estado,
+    nom_estado,
+    id_ons,
+    ceg,
+    nom_usina,
+    nom_tipousina,
+    nom_tipocombustivel,
+    cod_modalidadeoperacao,
+    instante,
+    val_geracao_mw
+FROM IE_DB.STAGING.stg_usina_geracao
+WHERE id_estado = 'GO'
+[0m17:31:34.023542 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": true, "command_wall_clock_time": 9.179773, "process_in_blocks": "48", "process_kernel_time": 1.715753, "process_mem_max_rss": "138420", "process_out_blocks": "12376", "process_user_time": 6.011088}
+[0m17:31:34.024188 [debug] [MainThread]: Command `dbt compile` succeeded at 17:31:34.024062 after 9.18 seconds
+[0m17:31:34.024590 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a80aca90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a8208750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75a8208790>]}
+[0m17:31:34.025014 [debug] [MainThread]: Flushing usage events
+[0m17:31:34.821478 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:40:17.579944 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7325a4d43710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7325a4d43a10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7325a4d437d0>]}
+
+
+============================== 17:40:17.587900 | a441c54e-d4c5-4f91-a64b-801c96cc7061 ==============================
+[0m17:40:17.587900 [info ] [MainThread]: Running with dbt=1.9.0
+[0m17:40:17.588859 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/root/.dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/usr/app/logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'log_format': 'default', 'introspect': 'True', 'target_path': 'None', 'invocation_command': 'dbt show --select stg_usina_geracao_go --limit 10', 'send_anonymous_usage_stats': 'True'}
+[0m17:40:18.188098 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'a441c54e-d4c5-4f91-a64b-801c96cc7061', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7325a3bbea90>]}
+[0m17:40:18.286502 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'a441c54e-d4c5-4f91-a64b-801c96cc7061', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7325a3bbf090>]}
+[0m17:40:18.333102 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
+[0m17:40:18.480379 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m17:40:18.747191 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:40:18.748031 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:40:18.857236 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'a441c54e-d4c5-4f91-a64b-801c96cc7061', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7325a36f90d0>]}
+[0m17:40:19.091767 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:40:19.098645 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:40:19.114817 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'a441c54e-d4c5-4f91-a64b-801c96cc7061', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7325a3948210>]}
+[0m17:40:19.117919 [info ] [MainThread]: Found 8 models, 22 data tests, 12 sources, 585 macros
+[0m17:40:19.118914 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'a441c54e-d4c5-4f91-a64b-801c96cc7061', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7325a625b850>]}
+[0m17:40:19.123603 [info ] [MainThread]: 
+[0m17:40:19.124658 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:40:19.125729 [info ] [MainThread]: 
+[0m17:40:19.127856 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m17:40:19.140173 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_CORE'
+[0m17:40:19.141783 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_STAGING'
+[0m17:40:19.143149 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_RAW'
+[0m17:40:19.377729 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_CORE"
+[0m17:40:19.378475 [debug] [ThreadPool]: On list_IE_DB_CORE: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_CORE"} */
+show objects in IE_DB.CORE limit 10000;
+[0m17:40:19.379465 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_RAW"
+[0m17:40:19.380600 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_STAGING"
+[0m17:40:19.381446 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:40:19.382235 [debug] [ThreadPool]: On list_IE_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_RAW"} */
+show objects in IE_DB.RAW limit 10000;
+[0m17:40:19.389075 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:40:19.382992 [debug] [ThreadPool]: On list_IE_DB_STAGING: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_STAGING"} */
+show objects in IE_DB.STAGING limit 10000;
+[0m17:40:19.392589 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:40:24.598704 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 5.217 seconds
+[0m17:40:24.729139 [debug] [ThreadPool]: SQL status: SUCCESS 27 in 5.337 seconds
+[0m17:40:24.742101 [debug] [ThreadPool]: Snowflake adapter: Snowflake query id: 01bf5044-0001-0490-0000-be410006f0e2
+[0m17:40:24.742828 [debug] [ThreadPool]: Snowflake adapter: Snowflake error: 002043 (02000): SQL compilation error:
+Object does not exist, or operation cannot be performed.
+[0m17:40:24.743682 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_relations_without_caching
+[0m17:40:24.744259 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m17:40:24.745559 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:40:24.746103 [debug] [MainThread]: Connection 'list_IE_DB_CORE' was left open.
+[0m17:40:24.746561 [debug] [MainThread]: On list_IE_DB_CORE: Close
+[0m17:40:24.886896 [debug] [MainThread]: Connection 'list_IE_DB_STAGING' was left open.
+[0m17:40:24.887765 [debug] [MainThread]: On list_IE_DB_STAGING: Close
+[0m17:40:25.027102 [debug] [MainThread]: Connection 'list_IE_DB_RAW' was left open.
+[0m17:40:25.027631 [debug] [MainThread]: On list_IE_DB_RAW: Close
+[0m17:40:25.163907 [error] [MainThread]: Encountered an error:
+
+[0m17:40:25.167781 [error] [MainThread]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/dbt/cli/requires.py", line 153, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/dbt/cli/requires.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/dbt/cli/requires.py", line 235, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/dbt/cli/requires.py", line 264, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/dbt/cli/requires.py", line 311, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/dbt/cli/main.py", line 390, in show
+    results = task.run()
+              ^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/dbt/task/runnable.py", line 588, in run
+    result = self.execute_with_hooks(selected_uids)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/dbt/task/runnable.py", line 526, in execute_with_hooks
+    before_run_status = self.before_run(adapter, selected_uids)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/dbt/task/runnable.py", line 502, in before_run
+    self.populate_adapter_cache(adapter)
+  File "/usr/local/lib/python3.11/site-packages/dbt/task/runnable.py", line 492, in populate_adapter_cache
+    adapter.set_relations_cache(cachable_nodes)
+  File "/usr/local/lib/python3.11/site-packages/dbt/adapters/base/impl.py", line 571, in set_relations_cache
+    self._relations_cache_for_schemas(relation_configs, required_schemas)
+  File "/usr/local/lib/python3.11/site-packages/dbt/adapters/base/impl.py", line 544, in _relations_cache_for_schemas
+    for future in as_completed(futures):
+  File "/usr/local/lib/python3.11/concurrent/futures/_base.py", line 243, in as_completed
+    waiter.event.wait(wait_timeout)
+  File "/usr/local/lib/python3.11/threading.py", line 622, in wait
+    signaled = self._cond.wait(timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+[0m17:40:25.169766 [debug] [MainThread]: Resource report: {"command_name": "show", "command_success": false, "command_wall_clock_time": 7.691597, "process_in_blocks": "88", "process_kernel_time": 1.728894, "process_mem_max_rss": "134328", "process_out_blocks": "9568", "process_user_time": 6.152918}
+[0m17:40:25.170858 [debug] [MainThread]: Command `dbt show` failed at 17:40:25.170596 after 7.69 seconds
+[0m17:40:25.171696 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7325a4d6ad90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7325a4d48a50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7325a37918d0>]}
+[0m17:40:25.172534 [debug] [MainThread]: Flushing usage events
+[0m17:40:26.012292 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:41:19.703836 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a589e3fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a58d8e050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a58842150>]}
+
+
+============================== 17:41:19.716344 | 9d89a1bc-544b-4a51-bcfd-3dc0e85bd992 ==============================
+[0m17:41:19.716344 [info ] [MainThread]: Running with dbt=1.9.0
+[0m17:41:19.717515 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/root/.dbt', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/usr/app/logs', 'debug': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt run --select stg_usina_geracao_go', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m17:41:20.173859 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '9d89a1bc-544b-4a51-bcfd-3dc0e85bd992', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a578b7190>]}
+[0m17:41:20.266259 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '9d89a1bc-544b-4a51-bcfd-3dc0e85bd992', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a5783e7d0>]}
+[0m17:41:20.267374 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
+[0m17:41:20.432890 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m17:41:20.724793 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m17:41:20.725794 [debug] [MainThread]: Partial parsing: updated file: meu_projeto_dbt://models/staging/stg_usina_geracao_go.sql
+[0m17:41:21.405437 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '9d89a1bc-544b-4a51-bcfd-3dc0e85bd992', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a57795250>]}
+[0m17:41:21.533371 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:41:21.537294 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:41:21.592171 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '9d89a1bc-544b-4a51-bcfd-3dc0e85bd992', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a577a4050>]}
+[0m17:41:21.593511 [info ] [MainThread]: Found 8 models, 22 data tests, 12 sources, 585 macros
+[0m17:41:21.594404 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9d89a1bc-544b-4a51-bcfd-3dc0e85bd992', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a572dd7d0>]}
+[0m17:41:21.597503 [info ] [MainThread]: 
+[0m17:41:21.598227 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:41:21.598913 [info ] [MainThread]: 
+[0m17:41:21.599966 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m17:41:21.601466 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB'
+[0m17:41:21.677967 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB"
+[0m17:41:21.678718 [debug] [ThreadPool]: On list_IE_DB: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB"} */
+show terse schemas in database IE_DB
+    limit 10000
+[0m17:41:21.679253 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:41:25.773839 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 4.095 seconds
+[0m17:41:25.782432 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_IE_DB, now list_IE_DB_STAGING)
+[0m17:41:25.794359 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_CORE'
+[0m17:41:25.807521 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_IE_DB_RAW'
+[0m17:41:25.808964 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_STAGING"
+[0m17:41:25.816826 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_CORE"
+[0m17:41:25.820350 [debug] [ThreadPool]: Using snowflake connection "list_IE_DB_RAW"
+[0m17:41:25.820982 [debug] [ThreadPool]: On list_IE_DB_STAGING: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_STAGING"} */
+show objects in IE_DB.STAGING limit 10000;
+[0m17:41:25.821524 [debug] [ThreadPool]: On list_IE_DB_CORE: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_CORE"} */
+show objects in IE_DB.CORE limit 10000;
+[0m17:41:25.822143 [debug] [ThreadPool]: On list_IE_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "connection_name": "list_IE_DB_RAW"} */
+show objects in IE_DB.RAW limit 10000;
+[0m17:41:25.824122 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:41:25.826978 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:41:26.002023 [debug] [ThreadPool]: SQL status: SUCCESS 27 in 0.179 seconds
+[0m17:41:27.157349 [debug] [ThreadPool]: Snowflake adapter: Snowflake query id: 01bf5045-0001-0485-0000-be410007110e
+[0m17:41:27.158318 [debug] [ThreadPool]: Snowflake adapter: Snowflake error: 002043 (02000): SQL compilation error:
+Object does not exist, or operation cannot be performed.
+[0m17:41:27.159485 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_relations_without_caching
+[0m17:41:27.160267 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m17:41:27.168644 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 1.344 seconds
+[0m17:41:27.174169 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9d89a1bc-544b-4a51-bcfd-3dc0e85bd992', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a55f5f9d0>]}
+[0m17:41:27.177338 [debug] [Thread-1 (]: Began running node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:41:27.178115 [info ] [Thread-1 (]: 1 of 1 START sql view model STAGING.stg_usina_geracao_go ....................... [RUN]
+[0m17:41:27.178903 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_IE_DB_CORE, now model.meu_projeto_dbt.stg_usina_geracao_go)
+[0m17:41:27.179491 [debug] [Thread-1 (]: Began compiling node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:41:27.191652 [debug] [Thread-1 (]: Writing injected SQL for node "model.meu_projeto_dbt.stg_usina_geracao_go"
+[0m17:41:27.192597 [debug] [Thread-1 (]: Began executing node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:41:27.236593 [debug] [Thread-1 (]: Writing runtime sql for node "model.meu_projeto_dbt.stg_usina_geracao_go"
+[0m17:41:27.238737 [debug] [Thread-1 (]: Using snowflake connection "model.meu_projeto_dbt.stg_usina_geracao_go"
+[0m17:41:27.239444 [debug] [Thread-1 (]: On model.meu_projeto_dbt.stg_usina_geracao_go: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "laboratorio_dbt", "target_name": "dev", "node_id": "model.meu_projeto_dbt.stg_usina_geracao_go"} */
+create or replace   view IE_DB.STAGING.stg_usina_geracao_go
+  
+   as (
+    -- models/stg_usina_geracao_go.sql
+-- Dados de geração das usinas do estado de Goiás (GO)
+
+SELECT 
+    mes_referencia,
+    id_subsistema,
+    nom_subsistema,
+    id_estado,
+    nom_estado,
+    id_ons,
+    ceg,
+    nom_usina,
+    nom_tipousina,
+    nom_tipocombustivel,
+    cod_modalidadeoperacao,
+    instante,
+    val_geracao_mw
+FROM IE_DB.STAGING.stg_usina_geracao
+WHERE id_estado = 'GO'
+  AND nom_tipocombustivel = 'Fotovoltaica'
+  );
+[0m17:41:27.522334 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 0.282 seconds
+[0m17:41:27.564675 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '9d89a1bc-544b-4a51-bcfd-3dc0e85bd992', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a571f1f10>]}
+[0m17:41:27.565851 [info ] [Thread-1 (]: 1 of 1 OK created sql view model STAGING.stg_usina_geracao_go .................. [[32mSUCCESS 1[0m in 0.38s]
+[0m17:41:27.567150 [debug] [Thread-1 (]: Finished running node model.meu_projeto_dbt.stg_usina_geracao_go
+[0m17:41:27.568986 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:41:27.569538 [debug] [MainThread]: Connection 'list_IE_DB_STAGING' was left open.
+[0m17:41:27.570184 [debug] [MainThread]: On list_IE_DB_STAGING: Close
+[0m17:41:27.732708 [debug] [MainThread]: Connection 'model.meu_projeto_dbt.stg_usina_geracao_go' was left open.
+[0m17:41:27.733666 [debug] [MainThread]: On model.meu_projeto_dbt.stg_usina_geracao_go: Close
+[0m17:41:27.894864 [debug] [MainThread]: Connection 'list_IE_DB_RAW' was left open.
+[0m17:41:27.895751 [debug] [MainThread]: On list_IE_DB_RAW: Close
+[0m17:41:28.048502 [info ] [MainThread]: 
+[0m17:41:28.049628 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 6.45 seconds (6.45s).
+[0m17:41:28.051564 [debug] [MainThread]: Command end result
+[0m17:41:28.132331 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m17:41:28.135897 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m17:41:28.145207 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/target/run_results.json
+[0m17:41:28.145659 [info ] [MainThread]: 
+[0m17:41:28.146358 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:41:28.147026 [info ] [MainThread]: 
+[0m17:41:28.147643 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m17:41:28.149017 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 8.51208, "process_in_blocks": "0", "process_kernel_time": 0.850956, "process_mem_max_rss": "136904", "process_out_blocks": "8128", "process_user_time": 5.345036}
+[0m17:41:28.149736 [debug] [MainThread]: Command `dbt run` succeeded at 17:41:28.149594 after 8.51 seconds
+[0m17:41:28.150228 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a58863d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a58863ed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745a59785d10>]}
+[0m17:41:28.150668 [debug] [MainThread]: Flushing usage events
+[0m17:41:28.925592 [debug] [MainThread]: An error was encountered while trying to flush usage events

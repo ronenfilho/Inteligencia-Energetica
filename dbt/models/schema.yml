@@ -6,6 +6,24 @@ sources:
       - name: disponibilidade_usina_2025_07
       - name: disponibilidade_usina_2025_08
       - name: disponibilidade_usina_2025_09
+      - name: geracao_usina_2_2025_01
+        identifier: '"GERACAO_USINA_2_2025-01"'
+      - name: geracao_usina_2_2025_02
+        identifier: '"GERACAO_USINA_2_2025-02"'
+      - name: geracao_usina_2_2025_03
+        identifier: '"GERACAO_USINA_2_2025-03"'
+      - name: geracao_usina_2_2025_04
+        identifier: '"GERACAO_USINA_2_2025-04"'
+      - name: geracao_usina_2_2025_05
+        identifier: '"GERACAO_USINA_2_2025-05"'
+      - name: geracao_usina_2_2025_06
+        identifier: '"GERACAO_USINA_2_2025-06"'
+      - name: geracao_usina_2_2025_07
+        identifier: '"GERACAO_USINA_2_2025-07"'
+      - name: geracao_usina_2_2025_08
+        identifier: '"GERACAO_USINA_2_2025-08"'
+      - name: geracao_usina_2_2025_09
+        identifier: '"GERACAO_USINA_2_2025-09"'
 
 models:
   # Testes para o modelo de staging (já existentes)
@@ -14,6 +32,37 @@ models:
       - name: instante
         tests: [not_null]
       - name: id_subsistema
+        tests: [not_null]
+
+  # Testes para o modelo de staging de geração
+  - name: stg_usina_geracao
+    columns:
+      - name: instante
+        tests: [not_null]
+      - name: id_subsistema
+        tests: [not_null]
+      - name: val_geracao_mw
+        tests: [not_null]
+      - name: ceg
+        tests: [not_null]
+      - name: id_ons
+        tests: [not_null]
+
+  # Testes para o modelo de staging de geração - somente GO
+  - name: stg_usina_geracao_go
+    columns:
+      - name: instante
+        tests: [not_null]
+      - name: id_estado
+        tests: 
+          - not_null
+          - accepted_values:
+              values: ['GO']
+      - name: val_geracao_mw
+        tests: [not_null]
+      - name: ceg
+        tests: [not_null]
+      - name: id_ons
         tests: [not_null]
 
   # Testes para a dimensão de usina
