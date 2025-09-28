@@ -19,7 +19,7 @@ models:
 
   # Testes para o modelo de staging de geração
   - name: stg_usina_geracao
-    description: "Union dinâmico de todas as tabelas de geração de usina"
+    description: "Union dinâmico de todas as tabelas de geração de usina - compatível com nomenclatura ONS"
     columns:
       - name: mes_referencia
         description: "Mês de referência extraído do nome da tabela"
@@ -42,6 +42,12 @@ models:
       - name: source_table_name
         description: "Nome da tabela de origem dos dados"
         tests: [not_null]
+      - name: data_type
+        description: "Tipo de dados - 'annual' para dados anuais (2000-2021) ou 'monthly' para dados mensais (2022+)"
+        tests: 
+          - not_null
+          - accepted_values:
+              values: ['annual', 'monthly', 'fallback']
 
   # Testes para o modelo de staging de geração - somente GO
   - name: stg_usina_geracao_go
@@ -110,3 +116,35 @@ models:
           - relationships:
               to: ref('dim_tempo')
               field: id_dim_tempo
+
+  # Testes para o fato agregado de geração
+  - name: fact_geracao_summary
+    description: "Fato agregado com estatísticas de geração por período e origem"
+    columns:
+      - name: mes_referencia
+        description: "Mês de referência dos dados"
+        tests: [not_null]
+      - name: data_type
+        description: "Tipo de dados (annual/monthly)"
+        tests: 
+          - not_null
+          - accepted_values:
+              values: ['annual', 'monthly']
+      - name: source_table_name
+        description: "Nome da tabela de origem"
+        tests: [not_null]
+      - name: total_records
+        description: "Total de registros na tabela de origem"
+        tests: [not_null]
+      - name: total_usinas
+        description: "Número de usinas distintas"
+        tests: [not_null]
+      - name: total_generation_mw
+        description: "Geração total em MW"
+      - name: generation_completeness_pct
+        description: "Percentual de completude dos dados de geração"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
