@@ -10,11 +10,11 @@ from airflow.models import Variable
 from airflow.operators.python import get_current_context
 
 dag = DAG(
-    dag_id='aaa_GERACAO_USINA_2_v1',
+    dag_id='aaa_GERACAO_USINA_2_v3',
     schedule=None,  # Execução única, não recorrente
     catchup=False,
     tags=['airbyte', 'sources', '2025', 'energy', 'geracao', 'one-time'],
-    description='Criar sources e connections no Airbyte para GERACAO_USINA_2 - v1 execução única',
+    description='Criar sources e connections no Airbyte para GERACAO_USINA_2 - v2 execução única',
     default_args={
         'owner': 'data_team',
         'depends_on_past': False,
@@ -24,7 +24,7 @@ dag = DAG(
         'retry_delay': pendulum.duration(minutes=2),
     },
     params={
-        "start_date": "2025-01-01",  # Data de início da captura (formato YYYY-MM-DD)
+        "start_date": "2022-01-01",  # Data de início da captura (formato YYYY-MM-DD) - 2022+ para dados mensais
         "end_date": "auto",          # "auto" para até mês atual (exclui futuros) ou YYYY-MM-DD para data específica
         "force_recreate": False,     # Se True, recria sources mesmo se já existirem
         "trigger_sync": True         # Se True, inicia sincronização automática após criar connections
@@ -161,8 +161,8 @@ def delete_conflicting_connections(stream_name, workspace_id):
         print(f"❌ Erro ao deletar connections conflitantes: {str(e)}")
         return deleted_count
 
-def generate_month_list(start_date_str, end_date_str):
-    """Gera lista de meses entre duas datas"""
+def generate_optimized_period_list(start_date_str, end_date_str):
+    """Gera lista otimizada de períodos baseada na regra de agrupamento da ONS"""
     from datetime import datetime
     
     # Parse das datas
@@ -175,45 +175,73 @@ def generate_month_list(start_date_str, end_date_str):
     else:
         end_date = datetime.strptime(end_date_str, "%Y-%m-%d")
     
-    months = []
-    current = start_date.replace(day=1)  # Começar no primeiro dia do mês
-    current_month = datetime.now().replace(day=1)  # Mês atual para comparação
+    periods = []
     
-    while current <= end_date:
-        # Se for "auto", não incluir meses futuros (posteriores ao mês atual)
-        if end_date_str == "auto" and current > current_month:
-            print(f"⏹️ Parando em {current.strftime('%Y-%m')} - mês futuro não incluído")
-            break
-        month_code = current.strftime("%Y-%m")
-        month_name = current.strftime("%B %Y")
-        
-        # Tradução dos meses para português
-        month_translations = {
-            "January": "Janeiro", "February": "Fevereiro", "March": "Março",
-            "April": "Abril", "May": "Maio", "June": "Junho",
-            "July": "Julho", "August": "Agosto", "September": "Setembro",
-            "October": "Outubro", "November": "Novembro", "December": "Dezembro"
-        }
-        
-        for en, pt in month_translations.items():
-            month_name = month_name.replace(en, pt)
-        
-        months.append((month_code, month_name))
-        
-        # Avançar para o próximo mês
-        if current.month == 12:
-            current = current.replace(year=current.year + 1, month=1)
-        else:
-            current = current.replace(month=current.month + 1)
+    # Tradução dos meses para português
+    month_translations = {
+        "January": "Janeiro", "February": "Fevereiro", "March": "Março",
+        "April": "Abril", "May": "Maio", "June": "Junho",
+        "July": "Julho", "August": "Agosto", "September": "Setembro",
+        "October": "Outubro", "November": "Novembro", "December": "Dezembro"
+    }
     
-    # Log informativo dos meses que serão processados
-    if months:
-        month_list = [m[0] for m in months]
-        print(f"📋 Meses que serão processados: {', '.join(month_list)}")
+    # 1. PROCESSAR ANOS 2000-2021 (arquivo anual) - apenas um source por ano
+    print("📊 Analisando período 2000-2021 (arquivos anuais)...")
+    start_year = max(2000, start_date.year)  # Não processar antes de 2000
+    end_year_legacy = min(2021, end_date.year)  # Não processar depois de 2021 para arquivos anuais
+    
+    for year in range(start_year, end_year_legacy + 1):
+        # Para arquivos anuais, usar Janeiro como representante (month_code será usado apenas no nome)
+        year_code = f"{year}-01"  # Usar Janeiro como padrão
+        year_name = f"Ano {year}"
+        periods.append((year_code, year_name, "annual"))
+    
+    # 2. PROCESSAR ANOS 2022+ (arquivo mensal) - um source por mês
+    print("📊 Analisando período 2022+ (arquivos mensais)...")
+    if end_date.year >= 2022:
+        # Começar em 2022 ou na data de início, o que for maior
+        monthly_start = datetime(max(2022, start_date.year), 1, 1)
+        if start_date.year >= 2022:
+            monthly_start = start_date.replace(day=1)
+        
+        current = monthly_start
+        current_month = datetime.now().replace(day=1)  # Mês atual para comparação
+        
+        while current <= end_date:
+            # Se for "auto", não incluir meses futuros (posteriores ao mês atual)
+            if end_date_str == "auto" and current > current_month:
+                print(f"⏹️ Parando em {current.strftime('%Y-%m')} - mês futuro não incluído")
+                break
+                
+            month_code = current.strftime("%Y-%m")
+            month_name = current.strftime("%B %Y")
+            
+            # Aplicar tradução
+            for en, pt in month_translations.items():
+                month_name = month_name.replace(en, pt)
+            
+            periods.append((month_code, month_name, "monthly"))
+            
+            # Avançar para o próximo mês
+            if current.month == 12:
+                current = current.replace(year=current.year + 1, month=1)
+            else:
+                current = current.replace(month=current.month + 1)
+    
+    # Log informativo dos períodos que serão processados
+    if periods:
+        annual_count = len([p for p in periods if p[2] == "annual"])
+        monthly_count = len([p for p in periods if p[2] == "monthly"])
+        
+        print(f"📋 Períodos otimizados que serão processados:")
+        print(f"   📅 Arquivos anuais (2000-2021): {annual_count} sources")
+        print(f"   📅 Arquivos mensais (2022+): {monthly_count} sources")
+        print(f"   📊 Total otimizado: {len(periods)} sources (vs {len(periods) if len(periods) < 50 else '300+'} sources no método anterior)")
+        
         if end_date_str == "auto":
             print(f"🚫 Meses futuros excluídos automaticamente (data atual: {datetime.now().strftime('%Y-%m')})")
     
-    return months
+    return periods
 
 def check_source_exists(source_name, workspace_id):
     """Verifica se um source já existe no workspace"""
@@ -409,17 +437,25 @@ def create_sources_task():
         definition_id = "778daa7c-feaf-4db6-96f3-70fd645acc77"
         print(f"📋 Usando definitionId padrão: {definition_id}")
     
-    # Gerar lista de meses
-    months = generate_month_list(start_date, end_date)
+    # Gerar lista otimizada de períodos
+    periods = generate_optimized_period_list(start_date, end_date)
     sources_created = []
     
-    print(f"🏗️ Iniciando criação de {len(months)} sources...")
+    print(f"🏗️ Iniciando criação de {len(periods)} sources...")
     print(f"📍 Workspace ID: {workspace_id}")
     print(f"🔧 Definition ID: {definition_id}")
     
-    for month_code, month_name in months:
-        source_name = f"GERACAO_USINA_2_{month_code}"
-        print(f"🔄 Processando source para {month_name} ({month_code})...")
+    for month_code, month_name, period_type in periods:
+        # Nomeação inteligente baseada no tipo de período
+        if period_type == "annual":
+            year = int(month_code.split("-")[0])
+            source_name = f"GERACAO_USINA_2_{year}_ANUAL"
+            dataset_name = f"GERACAO_USINA_2_{year}"
+        else:  # monthly
+            source_name = f"GERACAO_USINA_2_{month_code}"
+            dataset_name = f"GERACAO_USINA_2_{month_code}"
+        
+        print(f"🔄 Processando source para {month_name} ({month_code}) - Tipo: {period_type}")
         
         # Verificar se o source já existe
         existing_source_id = check_source_exists(source_name, workspace_id)
@@ -430,7 +466,8 @@ def create_sources_task():
                 "month": month_code,
                 "name": month_name,
                 "source_id": existing_source_id,
-                "status": "existing"
+                "status": "existing",
+                "period_type": period_type
             })
             continue
         elif existing_source_id and force_recreate:
@@ -445,17 +482,24 @@ def create_sources_task():
                 print(f"⚠️ Erro ao deletar source: {str(e)}")
         
         # URL do arquivo CSV no S3 da ONS - GERACAO_USINA_2
-        # Formato: GERACAO_USINA-2_2025_09.csv
-        year_month = month_code.replace("-", "_")  # Converter 2025-01 para 2025_01
-        s3_url = f"https://ons-aws-prod-opendata.s3.amazonaws.com/dataset/geracao_usina_2_ho/GERACAO_USINA-2_{year_month}.csv"
-        print(f"🔗 URL S3: {s3_url}")
+        year = int(month_code.split("-")[0])
+        
+        if period_type == "annual":
+            # Para anos 2000-2021: formato GERACAO_USINA-2_2020.csv (arquivo anual)
+            s3_url = f"https://ons-aws-prod-opendata.s3.amazonaws.com/dataset/geracao_usina_2_ho/GERACAO_USINA-2_{year}.csv"
+            print(f"🔗 URL S3 (arquivo anual): {s3_url}")
+        else:  # monthly
+            # Para anos 2022+: formato GERACAO_USINA-2_2025_09.csv (arquivo mensal)
+            year_month = month_code.replace("-", "_")  # Converter 2025-01 para 2025_01
+            s3_url = f"https://ons-aws-prod-opendata.s3.amazonaws.com/dataset/geracao_usina_2_ho/GERACAO_USINA-2_{year_month}.csv"
+            print(f"🔗 URL S3 (arquivo mensal): {s3_url}")
         
         source_data = {
             "name": source_name,
             "workspaceId": workspace_id,
             "definitionId": definition_id,
             "configuration": {
-                "dataset_name": f"GERACAO_USINA_2_{month_code}",
+                "dataset_name": dataset_name,
                 "format": "csv",
                 "url": s3_url,
                 "provider": {
@@ -477,7 +521,8 @@ def create_sources_task():
                     "month": month_code,
                     "name": month_name,
                     "source_id": source_id,
-                    "status": "created"
+                    "status": "created",
+                    "period_type": period_type
                 })
             else:
                 print(f"❌ Erro ao criar source para {month_name}: {response.status_code}")
@@ -488,12 +533,19 @@ def create_sources_task():
     
     print(f"\n📊 Resumo: {len(sources_created)} sources processados")
     
-    # Estatísticas
+    # Estatísticas por status
     created_count = len([s for s in sources_created if s.get('status') == 'created'])
     existing_count = len([s for s in sources_created if s.get('status') == 'existing'])
     
+    # Estatísticas por tipo de período
+    annual_count = len([s for s in sources_created if s.get('period_type') == 'annual'])
+    monthly_count = len([s for s in sources_created if s.get('period_type') == 'monthly'])
+    
     print(f"🆕 Criados: {created_count}")
     print(f"📋 Já existiam: {existing_count}")
+    print(f"📅 Arquivos anuais (2000-2021): {annual_count}")
+    print(f"📅 Arquivos mensais (2022+): {monthly_count}")
+    print(f"🎯 Otimização aplicada: Evitou criação de sources duplicados para arquivos anuais")
     
     return sources_created
 

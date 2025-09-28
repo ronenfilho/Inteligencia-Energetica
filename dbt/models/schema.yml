@@ -7,23 +7,6 @@ sources:
       - name: disponibilidade_usina_2025_08
       - name: disponibilidade_usina_2025_09
       - name: geracao_usina_2_2025_01
-        identifier: '"GERACAO_USINA_2_2025-01"'
-      - name: geracao_usina_2_2025_02
-        identifier: '"GERACAO_USINA_2_2025-02"'
-      - name: geracao_usina_2_2025_03
-        identifier: '"GERACAO_USINA_2_2025-03"'
-      - name: geracao_usina_2_2025_04
-        identifier: '"GERACAO_USINA_2_2025-04"'
-      - name: geracao_usina_2_2025_05
-        identifier: '"GERACAO_USINA_2_2025-05"'
-      - name: geracao_usina_2_2025_06
-        identifier: '"GERACAO_USINA_2_2025-06"'
-      - name: geracao_usina_2_2025_07
-        identifier: '"GERACAO_USINA_2_2025-07"'
-      - name: geracao_usina_2_2025_08
-        identifier: '"GERACAO_USINA_2_2025-08"'
-      - name: geracao_usina_2_2025_09
-        identifier: '"GERACAO_USINA_2_2025-09"'
 
 models:
   # Testes para o modelo de staging (já existentes)
