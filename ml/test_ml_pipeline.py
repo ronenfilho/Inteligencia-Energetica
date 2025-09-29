@@ -93,9 +93,9 @@ class SolarMLTester:
         print("\n🎯 Teste 3: Treinamento de modelos...")
         
         try:
-            # Extrair dados para treinamento (2022 até atual - ~3 anos)
+            # Extrair dados para treinamento (2023 até atual - ~3 anos)
             current_date = datetime.now().strftime('%Y-%m-%d')
-            df = self.pipeline.extract_data('2022-01-01', current_date)
+            df = self.pipeline.extract_data('2023-01-01', current_date)
             
             if df.empty:
                 print("   ❌ Nenhum dado extraído")
@@ -113,14 +113,183 @@ class SolarMLTester:
             
             print(f"   📊 Dados: {len(df)} registros, {df['id_usina'].nunique()} usinas")
             
-            # Features básicas para treinamento
+            # ====== ENGENHARIA DE FEATURES AVANÇADA ======
+            print("   🔧 Aplicando Engenharia de Features Avançada...")
+            
+            # 1. FEATURES TEMPORAIS BÁSICAS
             df['hora'] = df['medicao_data_hora'].dt.hour
-            df['dia_semana'] = df['medicao_data_hora'].dt.dayofweek
+            df['dia_semana'] = df['medicao_data_hora'].dt.dayofweek  # 0=Monday, 6=Sunday
             df['mes'] = df['medicao_data_hora'].dt.month
             df['dia_ano'] = df['medicao_data_hora'].dt.dayofyear
+            df['semana_ano'] = df['medicao_data_hora'].dt.isocalendar().week
+            df['trimestre'] = df['medicao_data_hora'].dt.quarter
+            
+            # 2. FEATURES CÍCLICAS (Sine/Cosine) - CRÍTICO para padrões temporais
+            # Hora do dia (0-23) -> ciclo 24h
+            df['hora_sin'] = np.sin(2 * np.pi * df['hora'] / 24)
+            df['hora_cos'] = np.cos(2 * np.pi * df['hora'] / 24)
+            
+            # Dia da semana (0-6) -> ciclo semanal
+            df['dia_semana_sin'] = np.sin(2 * np.pi * df['dia_semana'] / 7)
+            df['dia_semana_cos'] = np.cos(2 * np.pi * df['dia_semana'] / 7)
+            
+            # Mês (1-12) -> ciclo anual
+            df['mes_sin'] = np.sin(2 * np.pi * df['mes'] / 12)
+            df['mes_cos'] = np.cos(2 * np.pi * df['mes'] / 12)
+            
+            # Dia do ano (1-365) -> ciclo anual
+            df['dia_ano_sin'] = np.sin(2 * np.pi * df['dia_ano'] / 365)
+            df['dia_ano_cos'] = np.cos(2 * np.pi * df['dia_ano'] / 365)
+            
+            # 3. FEATURES SOLARES BASEADAS EM POSIÇÃO ASTRONÔMICA
+            # Aproximação do nascer/pôr do sol para Goiás (latitude ~-16°)
+            def solar_elevation_angle(hour, day_of_year, latitude=-16.0):
+                """Calcula ângulo de elevação solar aproximado"""
+                # Declinação solar
+                declination = 23.45 * np.sin(np.radians(360 * (284 + day_of_year) / 365))
+                # Ângulo horário
+                hour_angle = 15 * (hour - 12)  # 15° por hora
+                # Ângulo de elevação
+                elevation = np.arcsin(
+                    np.sin(np.radians(latitude)) * np.sin(np.radians(declination)) +
+                    np.cos(np.radians(latitude)) * np.cos(np.radians(declination)) * np.cos(np.radians(hour_angle))
+                )
+                return np.degrees(elevation)
+            
+            df['elevacao_solar'] = solar_elevation_angle(df['hora'], df['dia_ano'])
+            df['sol_visivel'] = (df['elevacao_solar'] > 0).astype(int)  # 1 se sol está visível
+            df['intensidade_solar'] = np.maximum(0, df['elevacao_solar'] / 90)  # Normalizado 0-1
+            
+            # 4. FEATURES CATEGÓRICAS AVANÇADAS
+            # Período do dia mais específico
+            def get_periodo_detalhado(hora):
+                if 0 <= hora <= 5:
+                    return 0  # Madrugada
+                elif 6 <= hora <= 8:
+                    return 1  # Manhã inicial
+                elif 9 <= hora <= 11:
+                    return 2  # Manhã
+                elif 12 <= hora <= 14:
+                    return 3  # Meio-dia
+                elif 15 <= hora <= 17:
+                    return 4  # Tarde
+                elif 18 <= hora <= 20:
+                    return 5  # Final tarde
+                else:
+                    return 6  # Noite
+            
+            df['periodo_detalhado'] = df['hora'].apply(get_periodo_detalhado)
+            
+            # Estação do ano
+            def get_estacao(mes):
+                if mes in [12, 1, 2]:
+                    return 0  # Verão
+                elif mes in [3, 4, 5]:
+                    return 1  # Outono
+                elif mes in [6, 7, 8]:
+                    return 2  # Inverno
+                else:
+                    return 3  # Primavera
+            
+            df['estacao'] = df['mes'].apply(get_estacao)
+            
+            # Fim de semana vs dia útil
+            df['fim_semana'] = (df['dia_semana'].isin([5, 6])).astype(int)  # Sáb/Dom
+            
+            # 5. FEATURES DE LAG (valores anteriores) - POR USINA
+            print("      📈 Criando features de lag...")
+            df = df.sort_values(['id_usina', 'medicao_data_hora'])
+            
+            # Lags de 1h, 2h, 3h, 6h, 12h, 24h, 48h, 168h (1 semana)
+            lag_periods = [1, 2, 3, 6, 12, 24, 48, 168]
+            for lag in lag_periods:
+                df[f'geracao_lag_{lag}h'] = df.groupby('id_usina')['geracao_mwh'].shift(lag)
+            
+            # 6. FEATURES DE MÉDIAS MÓVEIS - POR USINA
+            print("      📊 Criando médias móveis...")
+            windows = [3, 6, 12, 24, 48, 168]  # 3h, 6h, 12h, 1d, 2d, 1sem
+            for window in windows:
+                df[f'geracao_ma_{window}h'] = df.groupby('id_usina')['geracao_mwh'].rolling(
+                    window=window, min_periods=1
+                ).mean().reset_index(0, drop=True)
+            
+            # 7. FEATURES ESTATÍSTICAS AVANÇADAS
+            print("      📏 Criando features estatísticas...")
+            # Médias móveis com diferentes janelas
+            for window in [6, 24, 168]:
+                # Desvio padrão móvel
+                df[f'geracao_std_{window}h'] = df.groupby('id_usina')['geracao_mwh'].rolling(
+                    window=window, min_periods=1
+                ).std().reset_index(0, drop=True)
+                
+                # Diferença da média móvel
+                df[f'diff_ma_{window}h'] = df['geracao_mwh'] - df[f'geracao_ma_{window}h']
+                
+                # Percentual da média móvel
+                df[f'pct_ma_{window}h'] = df['geracao_mwh'] / (df[f'geracao_ma_{window}h'] + 1e-8)
+            
+            # 8. FEATURES DE VARIAÇÃO TEMPORAL
+            # Diferenças entre períodos
+            df['diff_1h'] = df.groupby('id_usina')['geracao_mwh'].diff(1)
+            df['diff_24h'] = df.groupby('id_usina')['geracao_mwh'].diff(24)
+            df['diff_168h'] = df.groupby('id_usina')['geracao_mwh'].diff(168)
+            
+            # Taxa de mudança
+            df['rate_change_1h'] = df['diff_1h'] / (df['geracao_lag_1h'] + 1e-8)
+            df['rate_change_24h'] = df['diff_24h'] / (df['geracao_lag_24h'] + 1e-8)
+            
+            # 9. FEATURES DE INTERAÇÃO
+            # Hora x Estação (interação importante para energia solar)
+            df['hora_x_estacao'] = df['hora'] * df['estacao']
+            df['elevacao_x_estacao'] = df['elevacao_solar'] * df['estacao']
+            
+            # 10. FEATURES ESPECÍFICAS POR USINA
+            # Encoding da usina (pode capturar diferenças de capacidade/localização)
+            usina_mapping = {usina: idx for idx, usina in enumerate(df['id_usina'].unique())}
+            df['usina_encoded'] = df['id_usina'].map(usina_mapping)
+            
+            # Capacidade relativa (baseada na média histórica de cada usina)
+            usina_capacity = df.groupby('id_usina')['geracao_mwh'].mean()
+            df['capacidade_relativa'] = df['id_usina'].map(usina_capacity)
+            df['geracao_normalizada'] = df['geracao_mwh'] / df['capacidade_relativa']
+            
+            # Remover linhas com NaN (devido aos lags)
+            print("      🧹 Removendo dados com NaN...")
+            df_clean = df.dropna()
+            print(f"      📊 Dados após limpeza: {len(df_clean)} registros (removidos {len(df) - len(df_clean)})")
+            
+            # Selecionar features finais (excluir colunas não numéricas e target)
+            exclude_cols = [
+                'geracao_mwh', 'id_usina', 'medicao_data_hora', 
+                'ID_USINA', 'MEDICAO_DATA_HORA', 'GERACAO_MWH'  # Versões maiúsculas
+            ]
+            
+            all_cols = df_clean.columns.tolist()
+            feature_cols = [col for col in all_cols if col not in exclude_cols]
+            
+            # Verificar se todas as features são numéricas
+            numeric_features = []
+            for col in feature_cols:
+                if df_clean[col].dtype in ['int64', 'float64', 'int32', 'float32']:
+                    numeric_features.append(col)
+            
+            print(f"   ✅ Features Engineering Completa!")
+            print(f"      📊 Total de features: {len(numeric_features)}")
+            print(f"      🔧 Categorias de features:")
+            print(f"         • Temporais básicas: 6")
+            print(f"         • Cíclicas (sin/cos): 8") 
+            print(f"         • Solares (astronômicas): 3")
+            print(f"         • Categóricas: 4")
+            print(f"         • Lags: {len(lag_periods)}")
+            print(f"         • Médias móveis: {len(windows)}")
+            print(f"         • Estatísticas: ~18")
+            print(f"         • Variações temporais: 5")
+            print(f"         • Interações: 2")
+            print(f"         • Específicas por usina: 3")
             
             # Preparar dados ML
-            feature_cols = ['hora', 'dia_semana', 'mes', 'dia_ano']
+            feature_cols = numeric_features
+            df = df_clean  # Usar dados limpos
             X = df[feature_cols].values
             y = df['geracao_mwh'].values
             
@@ -181,9 +350,20 @@ class SolarMLTester:
             print(f"         MAE final: {mae_final:.2f} MWh")
             print(f"         RMSE final: {rmse_final:.2f} MWh")
             
+            # ANÁLISE DE IMPORTÂNCIA DAS FEATURES
+            print(f"\n   🎯 Analisando importância das features...")
+            feature_importance = pd.DataFrame({
+                'feature': feature_cols,
+                'importance': model.feature_importances_
+            }).sort_values('importance', ascending=False)
+            
+            print(f"      🏆 Top 10 features mais importantes:")
+            for i, (_, row) in enumerate(feature_importance.head(10).iterrows()):
+                print(f"         {i+1:2d}. {row['feature']:<25} {row['importance']:.4f}")
+            
             # Salvar performance
             performance_data = {
-                'modelo': ['RandomForest'],
+                'modelo': ['RandomForest_AdvancedFeatures'],
                 'metodo_validacao': ['TimeSeriesSplit_5_folds'],
                 'r2_cv_mean': [np.mean(cv_scores_r2)],
                 'r2_cv_std': [np.std(cv_scores_r2)],
@@ -194,7 +374,8 @@ class SolarMLTester:
                 'r2_final': [r2_final],
                 'mae_final': [mae_final],
                 'rmse_final': [rmse_final],
-                'features': [len(feature_cols)],
+                'features_total': [len(feature_cols)],
+                'features_top10': [', '.join(feature_importance.head(10)['feature'].tolist())],
                 'dados_totais': [len(X)],
                 'dados_treino_final': [len(X_train_final)],
                 'dados_teste_final': [len(X_test_final)],
@@ -202,6 +383,9 @@ class SolarMLTester:
                 'periodo_fim': [current_date],
                 'data_teste': [datetime.now().strftime('%Y-%m-%d %H:%M:%S')]
             }
+            
+            # Salvar também importância das features
+            self.results['feature_importance'] = feature_importance
             
             self.results['performance'] = pd.DataFrame(performance_data)
             self.results['model'] = model
@@ -310,6 +494,12 @@ class SolarMLTester:
                 print(f"\n   📋 Resumo por usina (30 dias):")
                 print(resumo)
             
+            # 4. Importância das Features
+            if 'feature_importance' in self.results:
+                feat_file = f"{base_path}/importancia_features.csv"
+                self.results['feature_importance'].to_csv(feat_file, index=False)
+                print(f"   ✅ Importância Features: {feat_file}")
+            
             return True
             
         except Exception as e:
@@ -352,6 +542,7 @@ class SolarMLTester:
             print("   • previsoes_energia_solar_30_dias.csv")
             print("   • performance_modelos.csv")
             print("   • resumo_previsoes_por_usina.csv")
+            print("   • importancia_features.csv")
         else:
             print(f"⚠️ {success_count}/{len(tests)} testes passaram")
             print("🔧 Pipeline precisa de ajustes")
