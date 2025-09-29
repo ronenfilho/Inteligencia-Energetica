@@ -8,9 +8,6 @@ de energia solar em features otimizadas para modelos de Machine Learning.
 PRINCIPAIS FUNCIONALIDADES:
 - Features temporais básicas e cíclicas
 - Features solares baseadas em astronomia
-- Features de lag e médias móveis
-- Features estatísticas avançadas
-- Features de interação e específicas por usina
 
 AUTOR: Sistema de IA - Inteligencia Energética
 DATA: Setembro 2025
@@ -438,59 +435,36 @@ class SolarFeatureEngineering:
         
         # 4. Features categóricas
         df = self.create_categorical_features(df)
+
+        # Selecionar apenas features básicas criadas
+        basic_feature_names = (
+            self.feature_categories['temporal_basic'] + 
+            self.feature_categories['cyclic'] + 
+            self.feature_categories['solar_astronomical'] + 
+            self.feature_categories['categorical']
+        )
         
-        # 5. Features de lag
-        df = self.create_lag_features(df)
+        # Manter colunas essenciais + features básicas
+        essential_cols = ['geracao_mwh', 'id_usina', 'medicao_data_hora']
+        keep_cols = essential_cols + basic_feature_names
+        available_cols = [col for col in keep_cols if col in df.columns]
         
-        # 6. Médias móveis
-        df = self.create_moving_average_features(df)
-        
-        # 7. Features estatísticas
-        df = self.create_statistical_features(df)
-        
-        # 8. Variações temporais
-        df = self.create_temporal_variation_features(df)
-        
-        # 9. Features de interação
-        df = self.create_interaction_features(df)
-        
-        # 10. Features específicas por usina
-        df = self.create_plant_specific_features(df)
-        
-        # Limpar dados (remover NaN)
-        if verbose:
-            print("      🧹 Removendo dados com NaN...")
-            original_size = len(df)
-        
-        df_clean = df.dropna()
+        df_basic = df[available_cols].copy()
+        df_clean = df_basic.dropna()
         
         if verbose:
-            removed_count = len(df) - len(df_clean)
-            print(f"      📊 Dados após limpeza: {len(df_clean)} registros (removidos {removed_count})")
+            print(f"   ✅ Features Básicas (SEM DATA LEAKAGE):")
+            print(f"      📊 Total de features: {len(basic_feature_names)}")
+            print(f"      � Dados: {len(df_clean)} registros")
+            print(f"      🔧 Categorias:")
+            print(f"         • Temporais básicas: {len(self.feature_categories['temporal_basic'])}")
+            print(f"         • Cíclicas: {len(self.feature_categories['cyclic'])}")
+            print(f"         • Solares: {len(self.feature_categories['solar_astronomical'])}")
+            print(f"         • Categóricas: {len(self.feature_categories['categorical'])}")
+            print(f"      ⚠️ R² esperado: 30-50% (realista para energia solar)")
         
-        # Selecionar features numéricas
-        exclude_cols = [
-            'geracao_mwh', 'id_usina', 'medicao_data_hora', 
-            'ID_USINA', 'MEDICAO_DATA_HORA', 'GERACAO_MWH'  # Versões maiúsculas
-        ]
-        
-        all_cols = df_clean.columns.tolist()
-        numeric_features = []
-        
-        for col in all_cols:
-            if col not in exclude_cols and df_clean[col].dtype in ['int64', 'float64', 'int32', 'float32']:
-                numeric_features.append(col)
-        
-        if verbose:
-            print(f"   ✅ Feature Engineering Completa!")
-            print(f"      📊 Total de features: {len(numeric_features)}")
-            print(f"      🔧 Categorias de features:")
-            for category, features in self.feature_categories.items():
-                if features:
-                    print(f"         • {category.replace('_', ' ').title()}: {len(features)}")
-        
-        return df_clean, numeric_features, self.feature_categories
-    
+        return df_clean, basic_feature_names, self.feature_categories
+      
     def get_feature_summary(self):
         """
         Retorna resumo das features criadas
@@ -508,22 +482,6 @@ class SolarFeatureEngineering:
                 for category, features in self.feature_categories.items()
             }
         }
-
-# Função de conveniência para uso rápido
-def apply_solar_feature_engineering(df, latitude=None, verbose=True):
-    """
-    Função de conveniência para aplicar todas as transformações
-    
-    Args:
-        df (pd.DataFrame): DataFrame com dados brutos
-        latitude (float): Latitude da região (default: lê do .env)
-        verbose (bool): Imprimir progresso
-        
-    Returns:
-        tuple: (df_transformed, feature_list, feature_categories)
-    """
-    engineer = SolarFeatureEngineering(latitude=latitude)
-    return engineer.apply_all_features(df, verbose=verbose)
 
 if __name__ == "__main__":
     print("📊 Módulo de Engenharia de Features para Energia Solar")
