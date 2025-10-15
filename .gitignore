@@ -1,16 +1,216 @@
-# Airbyte credentials
+# ==========================================
+# Environment Variables & Credentials
+# ==========================================
+# Arquivos .env com credenciais sensíveis
+*.env
+!*.env.example
 airbyte/.env
+airflow/.env
+docker/airflow/.env
+docker/dbt/.env
+docker/metabase/.env
+ml/.env
+.env
 
-# Logs
+# ==========================================
+# Airflow
+# ==========================================
+# Logs do Airflow
+airflow/logs/
+docker/airflow/logs/
 *.log
 
-# Temporary files
-*.tmp
+# Arquivos de configuração gerados
+docker/airflow/config/airflow.cfg
+airflow/airflow.cfg
+airflow/webserver_config.py
 
-# IDE files
+# Arquivos temporários do Airflow
+airflow/*.pid
+airflow/*.err
+airflow/*.out
+airflow/airflow-webserver.pid
+
+# ==========================================
+# dbt
+# ==========================================
+# Diretórios gerados pelo dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+dbt/dbt_modules/
+
+# Profiles do dbt (podem conter credenciais)
+dbt/profiles.yml
+
+# ==========================================
+# Python
+# ==========================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+ml/.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# PyCharm
+.idea/
+*.iml
+
+# ==========================================
+# Docker
+# ==========================================
+# Volumes do Docker
+postgres-db-volume/
+docker/*/data/
+
+# ==========================================
+# Database
+# ==========================================
+# Arquivos de banco de dados local
+*.db
+*.sqlite
+*.sqlite3
+
+# ==========================================
+# Snowflake
+# ==========================================
+# Credenciais do Snowflake
+snowflake/credentials/
+*.snowflake
+
+# ==========================================
+# Machine Learning
+# ==========================================
+# Modelos treinados
+ml/models/*.pkl
+ml/models/*.h5
+ml/models/*.pt
+ml/models/*.pth
+ml/models/*.onnx
+
+# Datasets grandes
+ml/data/*.csv
+ml/data/*.parquet
+ml/data/*.json
+
+# Checkpoints
+ml/checkpoints/
+*.ckpt
+
+# ==========================================
+# IDE & Editors
+# ==========================================
+# VSCode
 .vscode/
+*.code-workspace
+
+# PyCharm
 .idea/
 
-# OS files
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# ==========================================
+# Operating System Files
+# ==========================================
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# ==========================================
+# Temporary & Cache Files
+# ==========================================
+*.tmp
+*.temp
+*.cache
+.cache/
+
+# ==========================================
+# Logs
+# ==========================================
+logs/
+*.log
+*.log.*
+
+# ==========================================
+# Backup Files
+# ==========================================
+*.bak
+*.backup
+*.old
+*~
+
+# ==========================================
+# Archives
+# ==========================================
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# ==========================================
+# Secrets & Keys
+# ==========================================
+# Chaves SSH
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+
+# Certificados
+*.crt
+*.cert
+
+# Token files
+*.token
