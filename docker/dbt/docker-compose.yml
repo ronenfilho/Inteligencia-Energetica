@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-snowflake:1.7.latest
+    container_name: dbt_snowflake
+    volumes:
+      - ../../dbt:/usr/app
+      - ~/.dbt:/root/.dbt
+    working_dir: /usr/app
+    environment:
+      - DBT_PROFILES_DIR=/usr/app
+    networks:
+      - dbt_network
+
+networks:
+  dbt_network:
+    driver: bridge
